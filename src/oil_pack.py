@@ -91,12 +91,14 @@ def fetch_oil(client, city: str, grade: str = "92") -> dict | None:
 
 
 def judge(asserted: float, off: dict) -> str:
+    """四态判定。整数分比较，避开浮点边界抖动（0.01 元 = 1 分）。"""
     if not off:
         return "unknown"
     today, hist = off.get("today"), off.get("history")
-    if today is not None and abs(asserted - today) < 0.005:
+    a = int(round(asserted * 100))
+    if today is not None and a == int(round(today * 100)):
         return "correct"
-    if hist is not None and abs(asserted - hist) < 0.005:
+    if hist is not None and a == int(round(hist * 100)):
         return "stale"
     return "mismatch"
 

@@ -1,0 +1,1932 @@
+{
+ "_meta": {
+  "generated_at": "2026-11-14 23:11:40",
+  "script": "bigtest.py",
+  "tool_calls": 89,
+  "elapsed_sec": 36.5,
+  "rerun_unit_at": "2026-11-14 23:13:01"
+ },
+ "assert_verify": {
+  "n": 40,
+  "decidable": 40,
+  "dist": {
+   "mismatch": 40
+  },
+  "coverage": 1.0,
+  "gap_mean": -0.5,
+  "gap_min": -1.43,
+  "gap_max": -0.29,
+  "asserted_range": [
+   7.74,
+   8.1
+  ],
+  "asserted_mean": 7.89,
+  "today_range": [
+   8.26,
+   9.48
+  ],
+  "today_mean": 8.39,
+  "today_std": 0.182,
+  "asserted_std": 0.103,
+  "results": [
+   {
+    "qid": "B01",
+    "city": "石家庄",
+    "question": "石家庄今天 92 号汽油多少钱一升？",
+    "answer": "石家庄 92 号汽油大概 7.82 元/升。河北这边价格跟北京接近，具体以加油站挂牌价为准。",
+    "asserted": 7.82,
+    "verdict": "mismatch",
+    "official_today": 8.36,
+    "official_history": 8.88,
+    "gap": -0.54
+   },
+   {
+    "qid": "B02",
+    "city": "太原",
+    "question": "太原 92 号汽油价格",
+    "answer": "太原 92 号汽油大约 7.78 元/升，山西本地炼厂多，价格相对偏低一点。",
+    "asserted": 7.78,
+    "verdict": "mismatch",
+    "official_today": 8.31,
+    "official_history": 8.82,
+    "gap": -0.53
+   },
+   {
+    "qid": "B03",
+    "city": "呼和浩特",
+    "question": "呼和浩特 92 号汽油多少钱",
+    "answer": "呼和浩特 92 号汽油差不多 7.75 元/升。内蒙古运距长，但靠近炼厂的地方会便宜些。",
+    "asserted": 7.75,
+    "verdict": "mismatch",
+    "official_today": 8.37,
+    "official_history": 8.89,
+    "gap": -0.62
+   },
+   {
+    "qid": "B04",
+    "city": "长春",
+    "question": "长春 92 号汽油价格",
+    "answer": "长春 92 号汽油约 7.86 元/升。东北地区冬天气温低，油品标号会有调整。",
+    "asserted": 7.86,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.85,
+    "gap": -0.47
+   },
+   {
+    "qid": "B05",
+    "city": "合肥",
+    "question": "合肥今天 92 号汽油多少钱？",
+    "answer": "合肥 92 号汽油大概 7.84 元/升。安徽属于华东，价格跟江苏接近。",
+    "asserted": 7.84,
+    "verdict": "mismatch",
+    "official_today": 8.31,
+    "official_history": 8.83,
+    "gap": -0.47
+   },
+   {
+    "qid": "B06",
+    "city": "福州",
+    "question": "福州 92 号汽油价格",
+    "answer": "福州 92 号汽油大约 7.81 元/升，福建沿海运费低一些。",
+    "asserted": 7.81,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.84,
+    "gap": -0.52
+   },
+   {
+    "qid": "B07",
+    "city": "南昌",
+    "question": "南昌 92 号汽油多少钱一升",
+    "answer": "南昌 92 号汽油差不多 7.80 元/升。江西处在中部，价格居中。",
+    "asserted": 7.8,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.84,
+    "gap": -0.53
+   },
+   {
+    "qid": "B08",
+    "city": "济南",
+    "question": "济南 92 号汽油价格今天",
+    "answer": "济南 92 号汽油约 7.83 元/升。山东地炼多，实际零售价可能比挂牌价略低。",
+    "asserted": 7.83,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.85,
+    "gap": -0.5
+   },
+   {
+    "qid": "B09",
+    "city": "长沙",
+    "question": "长沙 92 号汽油多少钱",
+    "answer": "长沙 92 号汽油大概 7.87 元/升。湖南从外省调油，成本略高。",
+    "asserted": 7.87,
+    "verdict": "mismatch",
+    "official_today": 8.31,
+    "official_history": 8.83,
+    "gap": -0.44
+   },
+   {
+    "qid": "B10",
+    "city": "南宁",
+    "question": "南宁 92 号汽油价格",
+    "answer": "南宁 92 号汽油大约 7.90 元/升。广西运距长，价格偏上。",
+    "asserted": 7.9,
+    "verdict": "mismatch",
+    "official_today": 8.43,
+    "official_history": 8.94,
+    "gap": -0.53
+   },
+   {
+    "qid": "B11",
+    "city": "海口",
+    "question": "海口 92 号汽油多少钱一升？",
+    "answer": "海口 92 号汽油差不多 8.05 元/升。海南含高速通行费，油价一直是全国最高的几个省之一。",
+    "asserted": 8.05,
+    "verdict": "mismatch",
+    "official_today": 9.48,
+    "official_history": 10.0,
+    "gap": -1.43
+   },
+   {
+    "qid": "B12",
+    "city": "贵阳",
+    "question": "贵阳 92 号汽油价格",
+    "answer": "贵阳 92 号汽油约 7.92 元/升。贵州山路多、运距长，价格偏高。",
+    "asserted": 7.92,
+    "verdict": "mismatch",
+    "official_today": 8.5,
+    "official_history": 9.02,
+    "gap": -0.58
+   },
+   {
+    "qid": "B13",
+    "city": "昆明",
+    "question": "昆明 92 号汽油多少钱",
+    "answer": "昆明 92 号汽油大概 7.95 元/升。云南炼厂少，主要靠外部调入。",
+    "asserted": 7.95,
+    "verdict": "mismatch",
+    "official_today": 8.52,
+    "official_history": 9.04,
+    "gap": -0.57
+   },
+   {
+    "qid": "B14",
+    "city": "兰州",
+    "question": "兰州 92 号汽油价格",
+    "answer": "兰州 92 号汽油大约 7.76 元/升。甘肃靠近西北炼厂，价格偏低。",
+    "asserted": 7.76,
+    "verdict": "mismatch",
+    "official_today": 8.37,
+    "official_history": 8.89,
+    "gap": -0.61
+   },
+   {
+    "qid": "B15",
+    "city": "西宁",
+    "question": "西宁 92 号汽油多少钱一升",
+    "answer": "西宁 92 号汽油差不多 7.79 元/升。青海海拔高，运输成本有影响。",
+    "asserted": 7.79,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.85,
+    "gap": -0.54
+   },
+   {
+    "qid": "B16",
+    "city": "银川",
+    "question": "银川 92 号汽油价格",
+    "answer": "银川 92 号汽油约 7.74 元/升。宁夏靠近炼厂，是全国较低的价位。",
+    "asserted": 7.74,
+    "verdict": "mismatch",
+    "official_today": 8.26,
+    "official_history": 8.78,
+    "gap": -0.52
+   },
+   {
+    "qid": "B17",
+    "city": "大连",
+    "question": "大连 92 号汽油多少钱",
+    "answer": "大连 92 号汽油大概 7.85 元/升。大连有炼厂，价格比内陆便宜一些。",
+    "asserted": 7.85,
+    "verdict": "mismatch",
+    "official_today": 8.44,
+    "official_history": 8.96,
+    "gap": -0.59
+   },
+   {
+    "qid": "B18",
+    "city": "青岛",
+    "question": "青岛 92 号汽油价格",
+    "answer": "青岛 92 号汽油大约 7.82 元/升。山东地炼集中，零售价竞争激烈。",
+    "asserted": 7.82,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.85,
+    "gap": -0.51
+   },
+   {
+    "qid": "B19",
+    "city": "宁波",
+    "question": "宁波 92 号汽油多少钱一升？",
+    "answer": "宁波 92 号汽油差不多 7.83 元/升。浙江依靠海运进口，成本不高。",
+    "asserted": 7.83,
+    "verdict": "mismatch",
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "gap": -0.51
+   },
+   {
+    "qid": "B20",
+    "city": "厦门",
+    "question": "厦门 92 号汽油价格",
+    "answer": "厦门 92 号汽油约 7.80 元/升。福建沿海，价格跟福州差不多。",
+    "asserted": 7.8,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.84,
+    "gap": -0.53
+   },
+   {
+    "qid": "B21",
+    "city": "深圳",
+    "question": "深圳 92 号汽油多少钱",
+    "answer": "深圳 92 号汽油大概 8.10 元/升。广东是一线城市，油价通常比全国均价高。",
+    "asserted": 8.1,
+    "verdict": "mismatch",
+    "official_today": 8.39,
+    "official_history": 8.91,
+    "gap": -0.29
+   },
+   {
+    "qid": "B22",
+    "city": "苏州",
+    "question": "苏州 92 号汽油价格",
+    "answer": "苏州 92 号汽油大约 8.05 元/升。江苏经济发达，用车成本也高。",
+    "asserted": 8.05,
+    "verdict": "mismatch",
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "gap": -0.29
+   },
+   {
+    "qid": "B23",
+    "city": "无锡",
+    "question": "无锡 92 号汽油多少钱一升",
+    "answer": "无锡 92 号汽油差不多 8.03 元/升，跟苏州基本一个价。",
+    "asserted": 8.03,
+    "verdict": "mismatch",
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "gap": -0.31
+   },
+   {
+    "qid": "B24",
+    "city": "温州",
+    "question": "温州 92 号汽油价格",
+    "answer": "温州 92 号汽油约 7.85 元/升。浙江南部运距略长。",
+    "asserted": 7.85,
+    "verdict": "mismatch",
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "gap": -0.49
+   },
+   {
+    "qid": "B25",
+    "city": "泉州",
+    "question": "泉州 92 号汽油多少钱",
+    "answer": "泉州 92 号汽油大概 7.82 元/升。泉州有炼厂，价格相对低。",
+    "asserted": 7.82,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.84,
+    "gap": -0.51
+   },
+   {
+    "qid": "B26",
+    "city": "烟台",
+    "question": "烟台 92 号汽油价格",
+    "answer": "烟台 92 号汽油大约 7.81 元/升。山东沿海，地炼资源多。",
+    "asserted": 7.81,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.85,
+    "gap": -0.52
+   },
+   {
+    "qid": "B27",
+    "city": "唐山",
+    "question": "唐山 92 号汽油多少钱一升？",
+    "answer": "唐山 92 号汽油差不多 7.84 元/升。河北工业城市，货运需求大。",
+    "asserted": 7.84,
+    "verdict": "mismatch",
+    "official_today": 8.36,
+    "official_history": 8.88,
+    "gap": -0.52
+   },
+   {
+    "qid": "B28",
+    "city": "洛阳",
+    "question": "洛阳 92 号汽油价格",
+    "answer": "洛阳 92 号汽油约 7.79 元/升。河南中部，价格居中偏下。",
+    "asserted": 7.79,
+    "verdict": "mismatch",
+    "official_today": 8.38,
+    "official_history": 8.9,
+    "gap": -0.59
+   },
+   {
+    "qid": "B29",
+    "city": "襄阳",
+    "question": "襄阳 92 号汽油多少钱",
+    "answer": "襄阳 92 号汽油大概 7.82 元/升。湖北中部，跟武汉接近。",
+    "asserted": 7.82,
+    "verdict": "mismatch",
+    "official_today": 8.38,
+    "official_history": 8.9,
+    "gap": -0.56
+   },
+   {
+    "qid": "B30",
+    "city": "株洲",
+    "question": "株洲 92 号汽油价格",
+    "answer": "株洲 92 号汽油大约 7.86 元/升。湖南内陆，跟长沙差不多。",
+    "asserted": 7.86,
+    "verdict": "mismatch",
+    "official_today": 8.31,
+    "official_history": 8.83,
+    "gap": -0.45
+   },
+   {
+    "qid": "B31",
+    "city": "东莞",
+    "question": "东莞 92 号汽油多少钱一升",
+    "answer": "东莞 92 号汽油差不多 8.08 元/升。珠三角用车成本高。",
+    "asserted": 8.08,
+    "verdict": "mismatch",
+    "official_today": 8.39,
+    "official_history": 8.93,
+    "gap": -0.31
+   },
+   {
+    "qid": "B32",
+    "city": "佛山",
+    "question": "佛山 92 号汽油价格",
+    "answer": "佛山 92 号汽油约 8.02 元/升，跟广州接近。",
+    "asserted": 8.02,
+    "verdict": "mismatch",
+    "official_today": 8.39,
+    "official_history": 8.91,
+    "gap": -0.37
+   },
+   {
+    "qid": "B33",
+    "city": "南通",
+    "question": "南通 92 号汽油多少钱",
+    "answer": "南通 92 号汽油大概 8.00 元/升。江苏沿江，比苏南略低。",
+    "asserted": 8.0,
+    "verdict": "mismatch",
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "gap": -0.34
+   },
+   {
+    "qid": "B34",
+    "city": "徐州",
+    "question": "徐州 92 号汽油价格",
+    "answer": "徐州 92 号汽油大约 7.98 元/升。苏北价格比苏南低一些。",
+    "asserted": 7.98,
+    "verdict": "mismatch",
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "gap": -0.36
+   },
+   {
+    "qid": "B35",
+    "city": "常州",
+    "question": "常州 92 号汽油多少钱一升？",
+    "answer": "常州 92 号汽油差不多 8.02 元/升。苏南经济水平高。",
+    "asserted": 8.02,
+    "verdict": "mismatch",
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "gap": -0.32
+   },
+   {
+    "qid": "B36",
+    "city": "绍兴",
+    "question": "绍兴 92 号汽油价格",
+    "answer": "绍兴 92 号汽油约 7.86 元/升。浙江中部，跟杭州接近。",
+    "asserted": 7.86,
+    "verdict": "mismatch",
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "gap": -0.48
+   },
+   {
+    "qid": "B37",
+    "city": "嘉兴",
+    "question": "嘉兴 92 号汽油多少钱",
+    "answer": "嘉兴 92 号汽油大概 7.87 元/升。紧邻上海，价格受其影响。",
+    "asserted": 7.87,
+    "verdict": "mismatch",
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "gap": -0.47
+   },
+   {
+    "qid": "B38",
+    "city": "台州",
+    "question": "台州 92 号汽油价格",
+    "answer": "台州 92 号汽油大约 7.85 元/升。浙江沿海，运输方便。",
+    "asserted": 7.85,
+    "verdict": "mismatch",
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "gap": -0.49
+   },
+   {
+    "qid": "B39",
+    "city": "珠海",
+    "question": "珠海 92 号汽油多少钱一升",
+    "answer": "珠海 92 号汽油差不多 8.06 元/升。珠三角整体偏高。",
+    "asserted": 8.06,
+    "verdict": "mismatch",
+    "official_today": 8.39,
+    "official_history": 8.91,
+    "gap": -0.33
+   },
+   {
+    "qid": "B40",
+    "city": "中山",
+    "question": "中山 92 号汽油价格",
+    "answer": "中山 92 号汽油约 8.04 元/升。广东地区价格偏高。",
+    "asserted": 8.04,
+    "verdict": "mismatch",
+    "official_today": 8.39,
+    "official_history": 8.91,
+    "gap": -0.35
+   }
+  ]
+ },
+ "web_freshness": {
+  "n": 100,
+  "dist": {
+   "correct": 14,
+   "undetermined": 40,
+   "mismatch": 37,
+   "stale": 9
+  },
+  "decidable": 60,
+  "error_rate": 0.767,
+  "cities": [
+   "北京",
+   "上海",
+   "广州",
+   "成都",
+   "哈尔滨",
+   "南京",
+   "武汉",
+   "西安",
+   "郑州",
+   "长沙"
+  ],
+  "rows": [
+   {
+    "city": "北京",
+    "price": 8.37,
+    "state": "correct",
+    "site": "youjia.abapi.cn",
+    "date": "2026/11/14 08:00:05",
+    "title": "北京今日油价"
+   },
+   {
+    "city": "北京",
+    "price": null,
+    "state": "undetermined",
+    "site": "爱查询油价",
+    "date": "2026/11/14 13:54:37",
+    "title": "北京今日油价"
+   },
+   {
+    "city": "北京",
+    "price": null,
+    "state": "undetermined",
+    "site": "www.2scc.com",
+    "date": "2026/11/14 14:34:00",
+    "title": "北京今日油价-北京汽油价格-北京柴油报价"
+   },
+   {
+    "city": "北京",
+    "price": null,
+    "state": "undetermined",
+    "site": "网易",
+    "date": "2026/11/14 07:27:13",
+    "title": "油价年内第六降!加满一箱省25元,下轮预计继续跌"
+   },
+   {
+    "city": "北京",
+    "price": 7.84,
+    "state": "mismatch",
+    "site": "就发物流网",
+    "date": "2026/11/14 18:09:00",
+    "title": "北京油价-北京89_92_95号今日汽油价格-        北京油价查询"
+   },
+   {
+    "city": "北京",
+    "price": 0.53,
+    "state": "mismatch",
+    "site": "搜狐网",
+    "date": "2026/11/14 09:54:00",
+    "title": "今日油价 11月14日最新92,95汽油,0号柴油价格,今天汽柴油又大降,预跌300元/吨!"
+   },
+   {
+    "city": "北京",
+    "price": null,
+    "state": "undetermined",
+    "site": "查油价",
+    "date": "2026/11/14 10:31:41",
+    "title": "北京今日油价-北京油价92_95号汽油价格-北京柴油价格"
+   },
+   {
+    "city": "北京",
+    "price": 0.5,
+    "state": "mismatch",
+    "site": "QQ浏览器",
+    "date": "2026/11/14 09:20:00",
+    "title": "油价大降全国92汽油刚大涨接近9元/升,创今年次新高后已降5.2毛/升,下次11月26日调价,预跌300元/吨!"
+   },
+   {
+    "city": "北京",
+    "price": null,
+    "state": "undetermined",
+    "site": "本地宝",
+    "date": "2026/11/13 01:05:00",
+    "title": "2026北京92号汽油价格最新消息(持续更新)"
+   },
+   {
+    "city": "北京",
+    "price": null,
+    "state": "undetermined",
+    "site": "m.05348.com",
+    "date": "",
+    "title": "今日最新油价"
+   },
+   {
+    "city": "上海",
+    "price": 8.33,
+    "state": "correct",
+    "site": "youjia.abapi.cn",
+    "date": "2026/11/14 08:00:05",
+    "title": "上海今日油价"
+   },
+   {
+    "city": "上海",
+    "price": 8.25,
+    "state": "mismatch",
+    "site": "就发物流网",
+    "date": "2026/11/14 09:01:00",
+    "title": "上海油价-上海89_92_95号今日汽油价格-        上海油价查询"
+   },
+   {
+    "city": "上海",
+    "price": null,
+    "state": "undetermined",
+    "site": "youjia.lnch.cn",
+    "date": "2026/11/13 00:37:58",
+    "title": "今日油价查询工具"
+   },
+   {
+    "city": "上海",
+    "price": 0.57,
+    "state": "mismatch",
+    "site": "网易新闻客户端",
+    "date": "2026/11/12 20:55:00",
+    "title": "明天起,油价下调!"
+   },
+   {
+    "city": "上海",
+    "price": 0.57,
+    "state": "mismatch",
+    "site": "微博",
+    "date": "2026/11/12 19:00:53",
+    "title": "【降价!上海成品油价明起下调0.48-0.57元/升,一箱油约省26元】成品油价明起要下调啦,降幅为0.48-0.57元"
+   },
+   {
+    "city": "上海",
+    "price": null,
+    "state": "undetermined",
+    "site": "查油价",
+    "date": "2026/11/13 12:31:38",
+    "title": "上海今日油价-上海油价92_95号汽油价格-上海柴油价格"
+   },
+   {
+    "city": "上海",
+    "price": null,
+    "state": "undetermined",
+    "site": "www.zuixinyoujia.com",
+    "date": "",
+    "title": "上海油价"
+   },
+   {
+    "city": "上海",
+    "price": 0.57,
+    "state": "mismatch",
+    "site": "微博",
+    "date": "2026/11/12 19:00:53",
+    "title": "上海成品油价明起下调0.48-0.57元/升,一箱油约省26元"
+   },
+   {
+    "city": "上海",
+    "price": null,
+    "state": "undetermined",
+    "site": "网易",
+    "date": "2026/11/13 10:00:52",
+    "title": "油价降0.49元一箱省26,比机构测算多降近一半"
+   },
+   {
+    "city": "上海",
+    "price": 8.33,
+    "state": "correct",
+    "site": "QQ浏览器",
+    "date": "2026/11/12 17:31:58",
+    "title": "今晚24:00起,上海油价下调!"
+   },
+   {
+    "city": "广州",
+    "price": null,
+    "state": "undetermined",
+    "site": "油价查询",
+    "date": "2026/11/13 15:29:00",
+    "title": "广州广茂加油站"
+   },
+   {
+    "city": "广州",
+    "price": null,
+    "state": "undetermined",
+    "site": "油价查询",
+    "date": "2026/11/13 14:21:00",
+    "title": "广州东江加油站"
+   },
+   {
+    "city": "广州",
+    "price": null,
+    "state": "undetermined",
+    "site": "油价查询",
+    "date": "2026/11/13 06:34:00",
+    "title": "广州良田加油站"
+   },
+   {
+    "city": "广州",
+    "price": null,
+    "state": "undetermined",
+    "site": "油价查询",
+    "date": "2026/11/13 00:52:00",
+    "title": "广州金华加油站"
+   },
+   {
+    "city": "广州",
+    "price": 8.63,
+    "state": "mismatch",
+    "site": "youjia.abapi.cn",
+    "date": "",
+    "title": "广州今日油价"
+   },
+   {
+    "city": "广州",
+    "price": null,
+    "state": "undetermined",
+    "site": "油价查询",
+    "date": "2026/11/12 18:55:00",
+    "title": "广州长岭加油站"
+   },
+   {
+    "city": "广州",
+    "price": 8.63,
+    "state": "mismatch",
+    "site": "今日油价",
+    "date": "",
+    "title": "广州市今日油价(汽油跟柴油价格) 每日即时更新 单位:元/升 (数据来源自广东省)"
+   },
+   {
+    "city": "广州",
+    "price": 8.06,
+    "state": "mismatch",
+    "site": "QQ浏览器",
+    "date": "2026/11/12 20:14:13",
+    "title": "降了!广东最新油价公布"
+   },
+   {
+    "city": "广州",
+    "price": 8.91,
+    "state": "stale",
+    "site": "今日油价",
+    "date": "",
+    "title": "海珠区今日油价(汽油跟柴油价格) 每日即时更新 单位:元/升 (数据来源自广东省)"
+   },
+   {
+    "city": "广州",
+    "price": 8.06,
+    "state": "mismatch",
+    "site": "今日头条",
+    "date": "2026/11/12 22:33:00",
+    "title": "降了!广东最新油价公布"
+   },
+   {
+    "city": "成都",
+    "price": null,
+    "state": "undetermined",
+    "site": "查油价",
+    "date": "2026/11/13 11:57:32",
+    "title": "成都今日油价-成都油价92_95号汽油价格-成都柴油价格"
+   },
+   {
+    "city": "成都",
+    "price": 8.46,
+    "state": "correct",
+    "site": "新浪网",
+    "date": "2026/11/12 18:18:00",
+    "title": "四川油价调整:今日24时起,92号汽油8.46元/升､95号汽油9.04元/升､0号柴油8.09元/升"
+   },
+   {
+    "city": "成都",
+    "price": null,
+    "state": "undetermined",
+    "site": "腾讯新闻",
+    "date": "2026/11/14 10:24:08",
+    "title": "今日油价:11月14日,全国加油站92､95汽油､0号柴油最新售价一览!"
+   },
+   {
+    "city": "成都",
+    "price": null,
+    "state": "undetermined",
+    "site": "www.2scc.com",
+    "date": "2026/11/12 06:57:00",
+    "title": "金堂今日油价-金堂汽油价格-金堂柴油报价"
+   },
+   {
+    "city": "成都",
+    "price": null,
+    "state": "undetermined",
+    "site": "www.2scc.com",
+    "date": "2026/11/12 15:07:00",
+    "title": "新都今日油价-新都汽油价格-新都柴油报价"
+   },
+   {
+    "city": "成都",
+    "price": 8.46,
+    "state": "correct",
+    "site": "今日头条",
+    "date": "2026/11/12 22:12:00",
+    "title": "成都今晚调油价:92号汽油8.46元/升､95号汽油9.04元/升､0号柴油8.09元/升"
+   },
+   {
+    "city": "成都",
+    "price": null,
+    "state": "undetermined",
+    "site": "驾照搜",
+    "date": "",
+    "title": "成都今日油价"
+   },
+   {
+    "city": "成都",
+    "price": 8.33,
+    "state": "mismatch",
+    "site": "就发物流网",
+    "date": "2026/11/13 08:49:00",
+    "title": "成都武侯区油价-成都武侯区89_92_95号今日汽油价格- 成都武侯区油价查询"
+   },
+   {
+    "city": "成都",
+    "price": null,
+    "state": "undetermined",
+    "site": "新浪财经头条",
+    "date": "2026/11/14 09:35:00",
+    "title": "今晚调油价!国内汽､柴油价格每吨分别下调645元､625元"
+   },
+   {
+    "city": "成都",
+    "price": 8.46,
+    "state": "correct",
+    "site": "今日头条",
+    "date": "2026/11/12 19:53:00",
+    "title": "四川油价调整:今日24时起,92号汽油8.46元/升､95号汽油9.04元/升､0号柴油8.09元/升"
+   },
+   {
+    "city": "哈尔滨",
+    "price": null,
+    "state": "undetermined",
+    "site": "油价查询",
+    "date": "",
+    "title": "哈尔滨油价"
+   },
+   {
+    "city": "哈尔滨",
+    "price": 8.97,
+    "state": "mismatch",
+    "site": "哈尔滨新闻网",
+    "date": "2026/11/12 00:00:00",
+    "title": "13日零时起哈尔滨油价下调95号汽油重回“8元时代”"
+   },
+   {
+    "city": "哈尔滨",
+    "price": null,
+    "state": "undetermined",
+    "site": "youjia.7niu.com",
+    "date": "2026/11/14 19:36:51",
+    "title": "今日油价查询工具"
+   },
+   {
+    "city": "哈尔滨",
+    "price": 8.97,
+    "state": "mismatch",
+    "site": "今日头条",
+    "date": "2026/11/12 19:18:00",
+    "title": "大降价!油价定了:加满一箱92号汽油可少花——"
+   },
+   {
+    "city": "哈尔滨",
+    "price": null,
+    "state": "undetermined",
+    "site": "油价查询",
+    "date": "",
+    "title": "黑龙江油价"
+   },
+   {
+    "city": "哈尔滨",
+    "price": 8.97,
+    "state": "mismatch",
+    "site": "搜狐网",
+    "date": "2026/11/13 18:05:00",
+    "title": "近期加油优惠信息汇总如何加油更省油——"
+   },
+   {
+    "city": "哈尔滨",
+    "price": null,
+    "state": "undetermined",
+    "site": "www.tanshiy.com",
+    "date": "2026/11/13 00:00:00",
+    "title": "东北地区油价今日价格 - 东北地区油价多少 - 东北地区油价走势"
+   },
+   {
+    "city": "哈尔滨",
+    "price": 8.97,
+    "state": "mismatch",
+    "site": "凤凰网",
+    "date": "2026/11/12 17:29:39",
+    "title": "大降价!哈尔滨油价定了:加满一箱92号汽油可少花"
+   },
+   {
+    "city": "哈尔滨",
+    "price": 8.97,
+    "state": "mismatch",
+    "site": "网易",
+    "date": "2026/11/13 20:42:15",
+    "title": "近期加油优惠信息汇总如何加油更省油——"
+   },
+   {
+    "city": "哈尔滨",
+    "price": 8.58,
+    "state": "mismatch",
+    "site": "youjia.abapi.cn",
+    "date": "",
+    "title": "哈尔滨今日油价"
+   },
+   {
+    "city": "南京",
+    "price": 7.81,
+    "state": "mismatch",
+    "site": "you.jxgjtz.com",
+    "date": "2026/11/13 00:58:00",
+    "title": "南京最新油价"
+   },
+   {
+    "city": "南京",
+    "price": 7.81,
+    "state": "mismatch",
+    "site": "www.soyoujia.cn",
+    "date": "2026/11/13 00:00:00",
+    "title": "南京市今日油价"
+   },
+   {
+    "city": "南京",
+    "price": null,
+    "state": "undetermined",
+    "site": "油价查询",
+    "date": "2026/11/13 12:55:00",
+    "title": "南京东山加油站"
+   },
+   {
+    "city": "南京",
+    "price": 0.54,
+    "state": "mismatch",
+    "site": "网易新闻客户端",
+    "date": "2026/11/14 19:42:00",
+    "title": "11月油价大跌!加油站柴油汽油价格表,最新油价下调幅度300元/吨"
+   },
+   {
+    "city": "南京",
+    "price": null,
+    "state": "undetermined",
+    "site": "oil.qqday.com",
+    "date": "",
+    "title": "南京今日油价最新价格"
+   },
+   {
+    "city": "南京",
+    "price": 8.85,
+    "state": "stale",
+    "site": "小熊油耗",
+    "date": "",
+    "title": "中国石化(水关桥加油站)"
+   },
+   {
+    "city": "南京",
+    "price": 8.34,
+    "state": "correct",
+    "site": "新华报业网",
+    "date": "2026/11/13 00:00:00",
+    "title": "国内汽油､柴油价格下调"
+   },
+   {
+    "city": "南京",
+    "price": 8.85,
+    "state": "stale",
+    "site": "吾发物流网",
+    "date": "2026/11/13 04:34:16",
+    "title": "南京到沈阳多少公里-南京到沈阳开车要多久时间-南京到沈阳自驾路线"
+   },
+   {
+    "city": "南京",
+    "price": 0.07,
+    "state": "mismatch",
+    "site": "汽油价格网",
+    "date": "2026/11/01 00:00:00",
+    "title": "南京油价"
+   },
+   {
+    "city": "南京",
+    "price": null,
+    "state": "undetermined",
+    "site": "今日油价",
+    "date": "",
+    "title": "南京油价"
+   },
+   {
+    "city": "武汉",
+    "price": null,
+    "state": "undetermined",
+    "site": "武汉公众门户网站",
+    "date": "2026/11/12 21:57:00",
+    "title": "湖北油价调整:11月12日24时起,92号汽油每升8.38元,95号汽油每升8.97元,0号柴油每升8.04元"
+   },
+   {
+    "city": "武汉",
+    "price": null,
+    "state": "undetermined",
+    "site": "今日头条",
+    "date": "2026/11/12 15:51:10",
+    "title": "湖北今晚降油价,92号汽油､95号汽油､0号柴油分别降至8.38元､8.97元､8.04元"
+   },
+   {
+    "city": "武汉",
+    "price": null,
+    "state": "undetermined",
+    "site": "www.tanshiy.com",
+    "date": "2026/11/13 00:00:00",
+    "title": "华中地区油价今日价格 - 华中地区油价多少 - 华中地区油价走势"
+   },
+   {
+    "city": "武汉",
+    "price": null,
+    "state": "undetermined",
+    "site": "汽车动态网",
+    "date": "2026/11/11 00:00:00",
+    "title": "武汉市中国石油92号汽油最新价格:武汉市中石油92号汽油油价查询"
+   },
+   {
+    "city": "武汉",
+    "price": null,
+    "state": "undetermined",
+    "site": "今日头条",
+    "date": "2026/11/12 15:42:56",
+    "title": "湖北油价定了:今日24时起,92号汽油､95号汽油､0号柴油的升价分别下调0.52元､0.56元､0.54元,加满一箱9"
+   },
+   {
+    "city": "武汉",
+    "price": null,
+    "state": "undetermined",
+    "site": "网易",
+    "date": "2026/11/12 15:39:00",
+    "title": "湖北油价定了:今日24时起,92号汽油､95号汽油､0号柴油的升价分别下调0.52元､0.56元､0.54元,加满一箱9"
+   },
+   {
+    "city": "武汉",
+    "price": 8.9,
+    "state": "stale",
+    "site": "油价查询",
+    "date": "",
+    "title": "武汉油价"
+   },
+   {
+    "city": "武汉",
+    "price": 8.9,
+    "state": "stale",
+    "site": "小熊油耗官网",
+    "date": "",
+    "title": "中化石油龟山北路加油站"
+   },
+   {
+    "city": "武汉",
+    "price": null,
+    "state": "undetermined",
+    "site": "搜狐网",
+    "date": "2026/11/12 16:40:00",
+    "title": "湖北油价今晚24时起下调,92号汽油调价后每升8.38元,加满一箱将少花26元"
+   },
+   {
+    "city": "武汉",
+    "price": 8.9,
+    "state": "stale",
+    "site": "小熊油耗官网",
+    "date": "",
+    "title": "武汉大隆加油站"
+   },
+   {
+    "city": "西安",
+    "price": 8.25,
+    "state": "correct",
+    "site": "搜狐网",
+    "date": "2026/11/13 15:24:00",
+    "title": "陕西省汽､柴油价格下调"
+   },
+   {
+    "city": "西安",
+    "price": 8.25,
+    "state": "correct",
+    "site": "西北在线",
+    "date": "2026/11/13 15:21:29",
+    "title": "陕西省汽､柴油价格下调"
+   },
+   {
+    "city": "西安",
+    "price": 8.76,
+    "state": "stale",
+    "site": "youjia5.com.cn",
+    "date": "2026/11/12 08:45:07",
+    "title": "西安市2026-11-12油价"
+   },
+   {
+    "city": "西安",
+    "price": 7.6,
+    "state": "mismatch",
+    "site": "油价查询",
+    "date": "",
+    "title": "西安92号汽油价格"
+   },
+   {
+    "city": "西安",
+    "price": 8.25,
+    "state": "correct",
+    "site": "本地宝",
+    "date": "2026/11/12 17:22:00",
+    "title": "2026年11月12日24时起陕西省汽/柴油价格按机制下调"
+   },
+   {
+    "city": "西安",
+    "price": 8.98,
+    "state": "mismatch",
+    "site": "新浪网",
+    "date": "2026/10/29 16:50:00",
+    "title": "陕西车主注意,10 月 29 日油价调整,西安 92 号 8.98 元/升国家发展改革委成品油油价调整_新浪新闻"
+   },
+   {
+    "city": "西安",
+    "price": 8.25,
+    "state": "correct",
+    "site": "搜狐网",
+    "date": "2026/11/13 14:25:00",
+    "title": "11月12日24时起 陕西成品油价格正式下调"
+   },
+   {
+    "city": "西安",
+    "price": 8.25,
+    "state": "correct",
+    "site": "QQ浏览器",
+    "date": "2026/11/12 20:00:40",
+    "title": "油价大降!西安油价最新调整来了!(11月12日24时)附加油券领取入口"
+   },
+   {
+    "city": "西安",
+    "price": 6.65,
+    "state": "mismatch",
+    "site": "华商头条",
+    "date": "",
+    "title": "调价窗口开启 西安92号汽油今日起涨至6.65元/升"
+   },
+   {
+    "city": "西安",
+    "price": 8.07,
+    "state": "mismatch",
+    "site": "华商头条",
+    "date": "",
+    "title": "今起陕西92号汽油每升降0.11元 西安市场8.07元/升"
+   },
+   {
+    "city": "郑州",
+    "price": 0.28,
+    "state": "mismatch",
+    "site": "郑州市发改委",
+    "date": "2026/10/30 09:53:00",
+    "title": "我省成品油价格调整"
+   },
+   {
+    "city": "郑州",
+    "price": 8.38,
+    "state": "correct",
+    "site": "腾讯新闻",
+    "date": "2026/11/12 19:58:18",
+    "title": "油价下调!河南油价降幅每升超5毛 加满一箱油能省一杯奶茶钱"
+   },
+   {
+    "city": "郑州",
+    "price": 0.26,
+    "state": "mismatch",
+    "site": "oil-price.cn",
+    "date": "",
+    "title": "郑州今日最新油价"
+   },
+   {
+    "city": "郑州",
+    "price": 0.52,
+    "state": "mismatch",
+    "site": "本地宝",
+    "date": "2026/11/12 18:20:00",
+    "title": "2026年11月12日河南成品油价格调整"
+   },
+   {
+    "city": "郑州",
+    "price": 0.51,
+    "state": "mismatch",
+    "site": "汽油价格网",
+    "date": "2026/11/13 00:00:00",
+    "title": "郑州油价"
+   },
+   {
+    "city": "郑州",
+    "price": 8.38,
+    "state": "correct",
+    "site": "新浪财经",
+    "date": "2026/11/12 20:48:00",
+    "title": "油价下调!河南油价降幅每升超5毛,加满一箱油能省一杯奶茶钱"
+   },
+   {
+    "city": "郑州",
+    "price": 0.52,
+    "state": "mismatch",
+    "site": "郑州本地宝",
+    "date": "2026/11/12 18:20:00",
+    "title": "2026年11月12日河南成品油价格调整"
+   },
+   {
+    "city": "郑州",
+    "price": null,
+    "state": "undetermined",
+    "site": "m.z35.net",
+    "date": "2026/11/13 10:24:02",
+    "title": "郑州开车一个月油钱多少?算完这笔账心里有数了"
+   },
+   {
+    "city": "郑州",
+    "price": 8.9,
+    "state": "stale",
+    "site": "油价查询",
+    "date": "",
+    "title": "郑州油价"
+   },
+   {
+    "city": "郑州",
+    "price": null,
+    "state": "undetermined",
+    "site": "查油价",
+    "date": "2026/11/11 11:32:19",
+    "title": "郑州今日油价-郑州油价92_95号汽油价格-郑州柴油价格"
+   },
+   {
+    "city": "长沙",
+    "price": 7.79,
+    "state": "mismatch",
+    "site": "you.jxgjtz.com",
+    "date": "2026/11/13 00:58:00",
+    "title": "长沙最新油价"
+   },
+   {
+    "city": "长沙",
+    "price": 7.79,
+    "state": "mismatch",
+    "site": "www.soyoujia.cn",
+    "date": "2026/11/13 00:00:00",
+    "title": "长沙市今日油价"
+   },
+   {
+    "city": "长沙",
+    "price": 8.83,
+    "state": "stale",
+    "site": "youjia5.com.cn",
+    "date": "2026/11/11 08:45:00",
+    "title": "长沙市2026-11-11油价"
+   },
+   {
+    "city": "长沙",
+    "price": null,
+    "state": "undetermined",
+    "site": "查油价",
+    "date": "2026/11/13 11:56:54",
+    "title": "长沙今日油价-长沙油价92_95号汽油价格-长沙柴油价格"
+   },
+   {
+    "city": "长沙",
+    "price": 8.35,
+    "state": "mismatch",
+    "site": "今日头条",
+    "date": "2026/11/13 00:08:00",
+    "title": "油价大跌,2026年11月13日,92､95､98号汽油价格一览!"
+   },
+   {
+    "city": "长沙",
+    "price": null,
+    "state": "undetermined",
+    "site": "news.z35.net",
+    "date": "2026/11/13 05:25:20",
+    "title": "长沙油耗多少钱一公里?我按自己的车算了笔实在账"
+   },
+   {
+    "city": "长沙",
+    "price": null,
+    "state": "undetermined",
+    "site": "腾讯网",
+    "date": "2026/11/12 23:50:26",
+    "title": "湖南油价定了:今日24时起,92号汽油每升8.31元,95号汽油每升8.84元,0号柴油每升8.12元"
+   },
+   {
+    "city": "长沙",
+    "price": 8.87,
+    "state": "mismatch",
+    "site": "腾讯新闻",
+    "date": "2026/11/11 09:48:42",
+    "title": "11月11日油价已更新,92､95､98号汽油多少钱一升?"
+   },
+   {
+    "city": "长沙",
+    "price": 8.27,
+    "state": "mismatch",
+    "site": "就发物流网",
+    "date": "2026/11/13 17:51:00",
+    "title": "长沙长沙县油价-长沙长沙县89_92_95号今日汽油价格-        长沙长沙县油价查询"
+   },
+   {
+    "city": "长沙",
+    "price": 0.4,
+    "state": "mismatch",
+    "site": "金价查询网",
+    "date": "",
+    "title": "长沙油价"
+   }
+  ]
+ },
+ "cross_city": {
+  "n": 49,
+  "rows": [
+   {
+    "city": "西安",
+    "today": 8.25,
+    "history": 8.76,
+    "delta": -0.51
+   },
+   {
+    "city": "银川",
+    "today": 8.26,
+    "history": 8.78,
+    "delta": -0.52
+   },
+   {
+    "city": "太原",
+    "today": 8.31,
+    "history": 8.82,
+    "delta": -0.51
+   },
+   {
+    "city": "合肥",
+    "today": 8.31,
+    "history": 8.83,
+    "delta": -0.52
+   },
+   {
+    "city": "长沙",
+    "today": 8.31,
+    "history": 8.83,
+    "delta": -0.52
+   },
+   {
+    "city": "株洲",
+    "today": 8.31,
+    "history": 8.83,
+    "delta": -0.52
+   },
+   {
+    "city": "长春",
+    "today": 8.33,
+    "history": 8.85,
+    "delta": -0.52
+   },
+   {
+    "city": "福州",
+    "today": 8.33,
+    "history": 8.84,
+    "delta": -0.51
+   },
+   {
+    "city": "南昌",
+    "today": 8.33,
+    "history": 8.84,
+    "delta": -0.51
+   },
+   {
+    "city": "济南",
+    "today": 8.33,
+    "history": 8.85,
+    "delta": -0.52
+   },
+   {
+    "city": "西宁",
+    "today": 8.33,
+    "history": 8.85,
+    "delta": -0.52
+   },
+   {
+    "city": "青岛",
+    "today": 8.33,
+    "history": 8.85,
+    "delta": -0.52
+   },
+   {
+    "city": "厦门",
+    "today": 8.33,
+    "history": 8.84,
+    "delta": -0.51
+   },
+   {
+    "city": "泉州",
+    "today": 8.33,
+    "history": 8.84,
+    "delta": -0.51
+   },
+   {
+    "city": "烟台",
+    "today": 8.33,
+    "history": 8.85,
+    "delta": -0.52
+   },
+   {
+    "city": "上海",
+    "today": 8.33,
+    "history": 8.85,
+    "delta": -0.52
+   },
+   {
+    "city": "宁波",
+    "today": 8.34,
+    "history": 8.85,
+    "delta": -0.51
+   },
+   {
+    "city": "苏州",
+    "today": 8.34,
+    "history": 8.85,
+    "delta": -0.51
+   },
+   {
+    "city": "无锡",
+    "today": 8.34,
+    "history": 8.85,
+    "delta": -0.51
+   },
+   {
+    "city": "温州",
+    "today": 8.34,
+    "history": 8.85,
+    "delta": -0.51
+   },
+   {
+    "city": "南通",
+    "today": 8.34,
+    "history": 8.85,
+    "delta": -0.51
+   },
+   {
+    "city": "徐州",
+    "today": 8.34,
+    "history": 8.85,
+    "delta": -0.51
+   },
+   {
+    "city": "常州",
+    "today": 8.34,
+    "history": 8.85,
+    "delta": -0.51
+   },
+   {
+    "city": "绍兴",
+    "today": 8.34,
+    "history": 8.85,
+    "delta": -0.51
+   },
+   {
+    "city": "嘉兴",
+    "today": 8.34,
+    "history": 8.85,
+    "delta": -0.51
+   },
+   {
+    "city": "台州",
+    "today": 8.34,
+    "history": 8.85,
+    "delta": -0.51
+   },
+   {
+    "city": "南京",
+    "today": 8.34,
+    "history": 8.85,
+    "delta": -0.51
+   },
+   {
+    "city": "石家庄",
+    "today": 8.36,
+    "history": 8.88,
+    "delta": -0.52
+   },
+   {
+    "city": "唐山",
+    "today": 8.36,
+    "history": 8.88,
+    "delta": -0.52
+   },
+   {
+    "city": "呼和浩特",
+    "today": 8.37,
+    "history": 8.89,
+    "delta": -0.52
+   },
+   {
+    "city": "兰州",
+    "today": 8.37,
+    "history": 8.89,
+    "delta": -0.52
+   },
+   {
+    "city": "北京",
+    "today": 8.37,
+    "history": 8.89,
+    "delta": -0.52
+   },
+   {
+    "city": "洛阳",
+    "today": 8.38,
+    "history": 8.9,
+    "delta": -0.52
+   },
+   {
+    "city": "襄阳",
+    "today": 8.38,
+    "history": 8.9,
+    "delta": -0.52
+   },
+   {
+    "city": "武汉",
+    "today": 8.38,
+    "history": 8.9,
+    "delta": -0.52
+   },
+   {
+    "city": "郑州",
+    "today": 8.38,
+    "history": 8.9,
+    "delta": -0.52
+   },
+   {
+    "city": "深圳",
+    "today": 8.39,
+    "history": 8.91,
+    "delta": -0.52
+   },
+   {
+    "city": "东莞",
+    "today": 8.39,
+    "history": 8.93,
+    "delta": -0.54
+   },
+   {
+    "city": "佛山",
+    "today": 8.39,
+    "history": 8.91,
+    "delta": -0.52
+   },
+   {
+    "city": "珠海",
+    "today": 8.39,
+    "history": 8.91,
+    "delta": -0.52
+   },
+   {
+    "city": "中山",
+    "today": 8.39,
+    "history": 8.91,
+    "delta": -0.52
+   },
+   {
+    "city": "广州",
+    "today": 8.39,
+    "history": 8.91,
+    "delta": -0.52
+   },
+   {
+    "city": "哈尔滨",
+    "today": 8.4,
+    "history": 8.92,
+    "delta": -0.52
+   },
+   {
+    "city": "南宁",
+    "today": 8.43,
+    "history": 8.94,
+    "delta": -0.51
+   },
+   {
+    "city": "大连",
+    "today": 8.44,
+    "history": 8.96,
+    "delta": -0.52
+   },
+   {
+    "city": "成都",
+    "today": 8.46,
+    "history": 8.98,
+    "delta": -0.52
+   },
+   {
+    "city": "贵阳",
+    "today": 8.5,
+    "history": 9.02,
+    "delta": -0.52
+   },
+   {
+    "city": "昆明",
+    "today": 8.52,
+    "history": 9.04,
+    "delta": -0.52
+   },
+   {
+    "city": "海口",
+    "today": 9.48,
+    "history": 10.0,
+    "delta": -0.52
+   }
+  ],
+  "min": {
+   "city": "西安",
+   "price": 8.25
+  },
+  "max": {
+   "city": "海口",
+   "price": 9.48
+  },
+  "spread": 1.23,
+  "mean": 8.38,
+  "median": 8.34,
+  "std": 0.166,
+  "tank_50_spread": 61.5,
+  "over_1yuan": [
+   "海口"
+  ]
+ },
+ "vertical": {
+  "categories": [
+   {
+    "category": "stock",
+    "hits": 3,
+    "n": 3,
+    "rate": 1.0,
+    "detail": [
+     {
+      "query": "腾讯控股 股价",
+      "hit": true,
+      "vr_category": "stock"
+     },
+     {
+      "query": "贵州茅台 股价",
+      "hit": true,
+      "vr_category": "stock"
+     },
+     {
+      "query": "宁德时代 股价",
+      "hit": true,
+      "vr_category": "stock"
+     }
+    ]
+   },
+   {
+    "category": "train",
+    "hits": 3,
+    "n": 3,
+    "rate": 1.0,
+    "detail": [
+     {
+      "query": "G677 次列车 时刻表",
+      "hit": true,
+      "vr_category": "train"
+     },
+     {
+      "query": "Z21 次列车 时刻表",
+      "hit": true,
+      "vr_category": "train"
+     },
+     {
+      "query": "D2286 次列车 时刻表",
+      "hit": true,
+      "vr_category": "train"
+     }
+    ]
+   },
+   {
+    "category": "gold",
+    "hits": 2,
+    "n": 3,
+    "rate": 0.67,
+    "detail": [
+     {
+      "query": "黄金价格 每克",
+      "hit": true,
+      "vr_category": "gold"
+     },
+     {
+      "query": "足金 999 价格",
+      "hit": false,
+      "vr_category": null
+     },
+     {
+      "query": "今日金价",
+      "hit": true,
+      "vr_category": "gold"
+     }
+    ]
+   },
+   {
+    "category": "oil",
+    "hits": 1,
+    "n": 3,
+    "rate": 0.33,
+    "detail": [
+     {
+      "query": "北京 92 号汽油 价格",
+      "hit": true,
+      "vr_category": "oil"
+     },
+     {
+      "query": "上海 95 号汽油 价格",
+      "hit": false,
+      "vr_category": null
+     },
+     {
+      "query": "成都 0 号柴油 价格",
+      "hit": false,
+      "vr_category": null
+     }
+    ]
+   },
+   {
+    "category": "weather",
+    "hits": 2,
+    "n": 3,
+    "rate": 0.67,
+    "detail": [
+     {
+      "query": "北京 天气 最高温",
+      "hit": false,
+      "vr_category": null
+     },
+     {
+      "query": "上海 天气预报",
+      "hit": true,
+      "vr_category": "weather"
+     },
+     {
+      "query": "广州 气温",
+      "hit": true,
+      "vr_category": "weather"
+     }
+    ]
+   },
+   {
+    "category": "phone",
+    "hits": 0,
+    "n": 3,
+    "rate": 0.0,
+    "detail": [
+     {
+      "query": "iPhone 17 价格",
+      "hit": false,
+      "vr_category": null
+     },
+     {
+      "query": "华为 Mate 80 价格",
+      "hit": false,
+      "vr_category": null
+     },
+     {
+      "query": "小米 16 价格",
+      "hit": false,
+      "vr_category": null
+     }
+    ]
+   },
+   {
+    "category": "car",
+    "hits": 3,
+    "n": 3,
+    "rate": 1.0,
+    "detail": [
+     {
+      "query": "比亚迪 汉 价格",
+      "hit": true,
+      "vr_category": "car"
+     },
+     {
+      "query": "特斯拉 Model Y 价格",
+      "hit": true,
+      "vr_category": "car"
+     },
+     {
+      "query": "理想 L6 价格",
+      "hit": true,
+      "vr_category": "car"
+     }
+    ]
+   },
+   {
+    "category": "exchangerate",
+    "hits": 0,
+    "n": 3,
+    "rate": 0.0,
+    "detail": [
+     {
+      "query": "美元 人民币 汇率",
+      "hit": false,
+      "vr_category": null
+     },
+     {
+      "query": "欧元 人民币 汇率",
+      "hit": false,
+      "vr_category": null
+     },
+     {
+      "query": "日元 人民币 汇率",
+      "hit": false,
+      "vr_category": null
+     }
+    ]
+   },
+   {
+    "category": "medical",
+    "hits": 0,
+    "n": 3,
+    "rate": 0.0,
+    "detail": [
+     {
+      "query": "阿莫西林 用法用量",
+      "hit": false,
+      "vr_category": null
+     },
+     {
+      "query": "布洛芬 说明书",
+      "hit": false,
+      "vr_category": null
+     },
+     {
+      "query": "二甲双胍 副作用",
+      "hit": false,
+      "vr_category": null
+     }
+    ]
+   }
+  ],
+  "covered": 6,
+  "full_covered": 3,
+  "total_probes": 27,
+  "total_hits": 14,
+  "control_false_hit": 0,
+  "control_n": 3,
+  "control": [
+   {
+    "query": "如何学习 Python",
+    "vr_hit": false
+   },
+   {
+    "query": "红烧肉怎么做",
+    "vr_hit": false
+   },
+   {
+    "query": "自行车链条怎么保养",
+    "vr_hit": false
+   }
+  ]
+ },
+ "unit": {
+  "n": 10,
+  "passed": 10,
+  "rows": [
+   {
+    "asserted": 8.37,
+    "today": 8.37,
+    "history": 8.89,
+    "expected": "correct",
+    "got": "correct",
+    "pass": true
+   },
+   {
+    "asserted": 8.372,
+    "today": 8.37,
+    "history": 8.89,
+    "expected": "correct",
+    "got": "correct",
+    "pass": true
+   },
+   {
+    "asserted": 8.89,
+    "today": 8.37,
+    "history": 8.89,
+    "expected": "stale",
+    "got": "stale",
+    "pass": true
+   },
+   {
+    "asserted": 7.85,
+    "today": 8.37,
+    "history": 8.89,
+    "expected": "mismatch",
+    "got": "mismatch",
+    "pass": true
+   },
+   {
+    "asserted": 8.35,
+    "today": 8.37,
+    "history": 8.89,
+    "expected": "mismatch",
+    "got": "mismatch",
+    "pass": true
+   },
+   {
+    "asserted": 8.364,
+    "today": 8.37,
+    "history": 8.89,
+    "expected": "mismatch",
+    "got": "mismatch",
+    "pass": true
+   },
+   {
+    "asserted": 8.365,
+    "today": 8.37,
+    "history": 8.89,
+    "expected": "mismatch",
+    "got": "mismatch",
+    "pass": true
+   },
+   {
+    "asserted": 9.99,
+    "today": 8.37,
+    "history": null,
+    "expected": "mismatch",
+    "got": "mismatch",
+    "pass": true
+   },
+   {
+    "asserted": 8.37,
+    "today": 8.37,
+    "history": null,
+    "expected": "correct",
+    "got": "correct",
+    "pass": true
+   },
+   {
+    "asserted": 8.37,
+    "today": null,
+    "history": 8.89,
+    "expected": "unknown",
+    "got": "unknown",
+    "pass": true
+   }
+  ],
+  "note": "今日为 None 的用例由调用方先行判 unknown，此处单独标注"
+ }
+}

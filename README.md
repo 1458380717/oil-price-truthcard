@@ -64,12 +64,15 @@ python src/build_article.py   # 出文章 → article.md
 
 | 指标 | 值 |
 |---|---|
-| 断言验真 | 8 城 8 条，**全错**，全部落在 7.75~7.90 |
-| 网页时效 | 50 条中可判定 27 条，**70.4% 不是今日价** |
+| 断言验真（盲测） | 40 城 **40 条全错**，报价 7.74~8.10 与官方 8.26~9.48 **零重叠** |
+| 网页时效 | 100 条可判定 60 条，**76.7% 不是今日价** |
+| A/B 对比 | 15 城首答仅 **40%** 是今日价，VR 卡 **100%** 双字段 |
+| 服务 | `python src/server.py` 本地 Web，四态判定 |
 | 跨城价差 | 12 城极差 **1.45 元/升**（乌鲁木齐 8.17 ~ 阿里 9.62），一箱差 72.5 元 |
-| 垂类召回 | 9 类覆盖 5 类，非垂类误命中 0/3 |
+| 垂类召回 | 27 探针覆盖 6/9 类，oil 类仅 1/3 |
+| 单元测试 | 10/10 通过，含浮点边界用例 |
 | 边界 | 漠河无 VR 卡，判 `unknown` |
-| 成本 | 36 次调用，约 0.72 元 |
+| 成本 | 149 次调用，约 3 元 |
 
 完整明细见 `data/oil_pack.json`（带 `_meta.generated_at` 与 `tool_calls`）和 `docs/油价真伪卡.html`。
 
@@ -90,7 +93,11 @@ python src/build_article.py   # 出文章 → article.md
 ## 目录
 
 ```
-src/oil_pack.py          采集与判定（主程序）
+src/server.py            本地 Web 服务（四态判定）
+src/bigtest.py           大规模采集（40 城 + 100 条 + 27 探针）
+src/compare.py           A/B 对比实验
+src/build_dist.py        分布图生成
+src/oil_pack.py          12 城快测（首轮）
 src/wsa_client.py        SearchPro 客户端，TC3 签名手写
 src/build_report.py      数据包 → 单文件 HTML 报告
 answers/                 待验真的模型回答（JSON）

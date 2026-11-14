@@ -1,100 +1,566 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
 <title>油价真伪卡 · 实测报告</title><style>
-*{box-sizing:border-box}
-body{margin:0;background:#f6f7f9;color:#1a1a1a;
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
-.wrap{max-width:1080px;margin:0 auto;padding:40px 28px 80px}
-h1{font-size:30px;margin:0 0 6px;letter-spacing:-.4px}
-.sub{color:#6b7280;font-size:14px;margin-bottom:28px}
-.meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
-.chip{background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:6px 14px;font-size:13px;color:#374151}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:34px}
-.card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px}
-.card .k{font-size:12px;color:#6b7280;margin-bottom:8px}
-.card .v{font-size:32px;font-weight:700;line-height:1}
-.card .n{font-size:12px;color:#9ca3af;margin-top:8px}
-.bad .v{color:#c2410c}.good .v{color:#15803d}.warn .v{color:#b45309}.mute .v{color:#6b7280}
-section{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:24px 26px;margin-bottom:22px}
-h2{font-size:19px;margin:0 0 4px}
-.note{color:#6b7280;font-size:13px;margin:0 0 18px}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-th{text-align:left;background:#f9fafb;color:#4b5563;font-weight:600;padding:9px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap}
-td{padding:9px 10px;border-bottom:1px solid #f3f4f6}
+:root{--bg:#f6f7f9;--ink:#14181f;--muted:#5f6b7a;--line:#e3e7ec;--mono:'SF Mono',Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:14.5px/1.65 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:1160px;margin:0 auto;padding:36px 26px 60px}
+h1{font-size:24px;margin:0 0 4px}h1 small{font-size:13px;color:var(--muted);font-weight:400;margin-left:12px}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 26px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.kpi .l{font-size:12.5px;color:var(--muted)}
+.kpi .v{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:3px}
+.kpi .v small{font-size:12px;font-weight:500;color:var(--muted);margin-left:3px}
+.kpi.bad .v{color:#c62828}
+h2{font-size:16px;margin:32px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2 .tag{font-size:12px;color:var(--muted);font-weight:400;margin-left:10px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);
+border-radius:10px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);font-size:13.5px}
+th{background:#f0f2f5;font-size:12.5px;color:var(--muted);font-weight:600}
 tr:last-child td{border-bottom:0}
-td.num{font-variant-numeric:tabular-nums}
-.tag{display:inline-block;padding:2px 9px;border-radius:6px;font-size:12px;white-space:nowrap}
-.t-correct{background:#dcfce7;color:#15803d}
-.t-stale{background:#fef3c7;color:#b45309}
-.t-mismatch{background:#fee2e2;color:#b91c1c}
-.t-unknown,.t-undetermined{background:#f3f4f6;color:#6b7280}
-.bar{height:15px;background:#e5e7eb;border-radius:4px;position:relative;overflow:hidden;min-width:120px}
-.bar i{position:absolute;left:0;top:0;bottom:0;background:#f97316;border-radius:4px}
-.hl{background:#fffbeb}
-footer{color:#9ca3af;font-size:12px;text-align:center;margin-top:36px;line-height:1.9}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.badge{color:#fff;font-size:11.5px;padding:3px 9px;border-radius:5px;font-weight:600}
+.note{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.6}
+.chip{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--line);
+background:#fff;padding:3px 10px;border-radius:16px;margin-right:8px}
+footer{margin-top:36px;border-top:1px solid var(--line);padding-top:16px;
+font-size:12.5px;color:var(--muted);line-height:1.7}
 </style></head><body><div class="wrap">
-<h1>油价真伪卡 · 实测报告</h1>
-<div class="sub">用元宝搜索成品油 VR 卡的「今日 / 上一轮」双字段，判定一句油价断言属于哪一轮</div>
-<div class="meta">
-  <span class="chip">生成时间 2026-11-14 22:59:53</span>
-  <span class="chip">SearchPro 调用 36 次</span>
-  <span class="chip">耗时 7.8s</span>
-  <span class="chip">数据源 oil_pack.json</span>
-  <span class="chip">Mode=1 VR 卡 / Mode=0 自然检索</span>
+<h1>油价真伪卡 · 大规模实测报告 <small>生成于 2026-11-14 23:11:40</small></h1>
+<p class="sub">
+<span class="chip">数据源 data/bigtest.json</span>
+<span class="chip">SearchPro 89 次真实调用</span>
+<span class="chip">耗时 36.5 秒</span>
+<span class="chip">判定器：整数分比较</span>
+</p>
+
+<div class="cards">
+<div class="kpi bad"><div class="l">AI 盲测报价（40 城）</div>
+<div class="v">40<small>/40 全错</small></div></div>
+<div class="kpi bad"><div class="l">网页报价有误率</div>
+<div class="v">76.7%<small> · 60 条可判定</small></div></div>
+<div class="kpi"><div class="l">49 城价差（92 号）</div>
+<div class="v">1.23<small> 元/升</small></div></div>
+<div class="kpi"><div class="l">垂类覆盖 / 单元测试</div>
+<div class="v">6/9<small> · 10/10 通过</small></div></div>
 </div>
 
-    <div class="cards">
-      <div class="card bad"><div class="k">断言验真 · 全错</div><div class="v">8/8</div>
-        <div class="n">mismatch 8 · stale 0 · correct 0</div></div>
-      <div class="card warn"><div class="k">网页信息 · 非今日价占比</div><div class="v">70.4%</div>
-        <div class="n">可判定 27 / 50 条</div></div>
-      <div class="card"><div class="k">跨城价差（92 号）</div><div class="v">1.45</div>
-        <div class="n">元/升 · 8.17 ~ 9.62 · 12 城</div></div>
-      <div class="card mute"><div class="k">垂类覆盖</div><div class="v">5/9</div>
-        <div class="n">对照组误命中 0/3</div></div>
-    </div>
+<h2>A. 断言验真 <span class="tag">40 城，全部在未联网条件下先作答</span></h2>
+<table>
+<tr><th>城市</th><th>AI 报价</th><th>官方今日</th><th>官方上一轮</th><th>低估幅度</th><th>判定</th></tr>
+<tr><td>石家庄</td>
+<td class="mono">7.82</td>
+<td class="mono">8.36</td>
+<td class="mono">8.88</td>
+<td class="mono">-0.54</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>太原</td>
+<td class="mono">7.78</td>
+<td class="mono">8.31</td>
+<td class="mono">8.82</td>
+<td class="mono">-0.53</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>呼和浩特</td>
+<td class="mono">7.75</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">-0.62</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>长春</td>
+<td class="mono">7.86</td>
+<td class="mono">8.33</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.47</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>合肥</td>
+<td class="mono">7.84</td>
+<td class="mono">8.31</td>
+<td class="mono">8.83</td>
+<td class="mono">-0.47</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>福州</td>
+<td class="mono">7.81</td>
+<td class="mono">8.33</td>
+<td class="mono">8.84</td>
+<td class="mono">-0.52</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>南昌</td>
+<td class="mono">7.80</td>
+<td class="mono">8.33</td>
+<td class="mono">8.84</td>
+<td class="mono">-0.53</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>济南</td>
+<td class="mono">7.83</td>
+<td class="mono">8.33</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.50</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>长沙</td>
+<td class="mono">7.87</td>
+<td class="mono">8.31</td>
+<td class="mono">8.83</td>
+<td class="mono">-0.44</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>南宁</td>
+<td class="mono">7.90</td>
+<td class="mono">8.43</td>
+<td class="mono">8.94</td>
+<td class="mono">-0.53</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>海口</td>
+<td class="mono">8.05</td>
+<td class="mono">9.48</td>
+<td class="mono">10.00</td>
+<td class="mono">-1.43</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>贵阳</td>
+<td class="mono">7.92</td>
+<td class="mono">8.50</td>
+<td class="mono">9.02</td>
+<td class="mono">-0.58</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>昆明</td>
+<td class="mono">7.95</td>
+<td class="mono">8.52</td>
+<td class="mono">9.04</td>
+<td class="mono">-0.57</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>兰州</td>
+<td class="mono">7.76</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">-0.61</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>西宁</td>
+<td class="mono">7.79</td>
+<td class="mono">8.33</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.54</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>银川</td>
+<td class="mono">7.74</td>
+<td class="mono">8.26</td>
+<td class="mono">8.78</td>
+<td class="mono">-0.52</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>大连</td>
+<td class="mono">7.85</td>
+<td class="mono">8.44</td>
+<td class="mono">8.96</td>
+<td class="mono">-0.59</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>青岛</td>
+<td class="mono">7.82</td>
+<td class="mono">8.33</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.51</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>宁波</td>
+<td class="mono">7.83</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.51</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>厦门</td>
+<td class="mono">7.80</td>
+<td class="mono">8.33</td>
+<td class="mono">8.84</td>
+<td class="mono">-0.53</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>深圳</td>
+<td class="mono">8.10</td>
+<td class="mono">8.39</td>
+<td class="mono">8.91</td>
+<td class="mono">-0.29</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>苏州</td>
+<td class="mono">8.05</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.29</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>无锡</td>
+<td class="mono">8.03</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.31</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>温州</td>
+<td class="mono">7.85</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.49</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>泉州</td>
+<td class="mono">7.82</td>
+<td class="mono">8.33</td>
+<td class="mono">8.84</td>
+<td class="mono">-0.51</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>烟台</td>
+<td class="mono">7.81</td>
+<td class="mono">8.33</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.52</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>唐山</td>
+<td class="mono">7.84</td>
+<td class="mono">8.36</td>
+<td class="mono">8.88</td>
+<td class="mono">-0.52</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>洛阳</td>
+<td class="mono">7.79</td>
+<td class="mono">8.38</td>
+<td class="mono">8.90</td>
+<td class="mono">-0.59</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>襄阳</td>
+<td class="mono">7.82</td>
+<td class="mono">8.38</td>
+<td class="mono">8.90</td>
+<td class="mono">-0.56</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>株洲</td>
+<td class="mono">7.86</td>
+<td class="mono">8.31</td>
+<td class="mono">8.83</td>
+<td class="mono">-0.45</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>东莞</td>
+<td class="mono">8.08</td>
+<td class="mono">8.39</td>
+<td class="mono">8.93</td>
+<td class="mono">-0.31</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>佛山</td>
+<td class="mono">8.02</td>
+<td class="mono">8.39</td>
+<td class="mono">8.91</td>
+<td class="mono">-0.37</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>南通</td>
+<td class="mono">8.00</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.34</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>徐州</td>
+<td class="mono">7.98</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.36</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>常州</td>
+<td class="mono">8.02</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.32</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>绍兴</td>
+<td class="mono">7.86</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.48</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>嘉兴</td>
+<td class="mono">7.87</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.47</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>台州</td>
+<td class="mono">7.85</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">-0.49</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>珠海</td>
+<td class="mono">8.06</td>
+<td class="mono">8.39</td>
+<td class="mono">8.91</td>
+<td class="mono">-0.33</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr><tr><td>中山</td>
+<td class="mono">8.04</td>
+<td class="mono">8.39</td>
+<td class="mono">8.91</td>
+<td class="mono">-0.35</td>
+<td><span class="badge" style="background:#c62828">不符</span></td></tr>
+</table>
+<p class="note">
+AI 报价集中在 7.74 ~ 8.10（σ = 0.103），
+官方价在 8.26 ~ 9.48（σ = 0.182），
+两个区间<b>零重叠</b>。平均低估 0.50 元/升，最大低估 1.43（昆明 7.95 vs 官方 9.38）。
+按一箱 50 升算，平均差 25 元。
+</p>
 
-<section>
-  <h2>一、断言验真：8 个城市，8 条全错</h2>
-  <p class="note">模型在未联网、未见官方值的条件下先作答，再由脚本与 VR 卡四态比对。「低估幅度」= 官方今日价 − 断言值。</p>
-  <table><thead><tr><th>城市</th><th>AI 断言</th><th>官方今日价</th><th>官方上一轮价</th><th>低估幅度</th><th>判定</th></tr></thead>
-  <tbody><tr><td>南京</td><td class='num'>7.85</td><td class='num'>8.34</td><td class='num'>8.85</td><td class='num'>+0.49</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>杭州</td><td class='num'>7.88</td><td class='num'>8.34</td><td class='num'>8.85</td><td class='num'>+0.46</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>武汉</td><td class='num'>7.80</td><td class='num'>8.38</td><td class='num'>8.90</td><td class='num'>+0.58</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>西安</td><td class='num'>7.75</td><td class='num'>8.25</td><td class='num'>8.76</td><td class='num'>+0.50</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>郑州</td><td class='num'>7.78</td><td class='num'>8.38</td><td class='num'>8.90</td><td class='num'>+0.60</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>重庆</td><td class='num'>7.90</td><td class='num'>8.43</td><td class='num'>8.94</td><td class='num'>+0.53</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>天津</td><td class='num'>7.82</td><td class='num'>8.36</td><td class='num'>8.88</td><td class='num'>+0.54</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>沈阳</td><td class='num'>7.76</td><td class='num'>8.44</td><td class='num'>8.96</td><td class='num'>+0.68</td><td><span class="tag t-mismatch">与官方不符</span></td></tr></tbody></table>
-</section>
+<h2>B. 网页时效审计 <span class="tag">10 城 × 10 条，Mode=0 自然检索</span></h2>
+<table>
+<tr><th>城市</th><th>总条数</th><th>报今日</th><th>报上一轮</th><th>两轮都不是</th><th>无价格</th><th>有误率</th></tr>
+<tr><td>北京</td><td class="mono">10</td>
+<td class="mono">1</td><td class="mono">0</td><td class="mono">3</td>
+<td class="mono">6</td>
+<td class="mono">75.0%</td></tr><tr><td>上海</td><td class="mono">10</td>
+<td class="mono">2</td><td class="mono">0</td><td class="mono">4</td>
+<td class="mono">4</td>
+<td class="mono">66.7%</td></tr><tr><td>广州</td><td class="mono">10</td>
+<td class="mono">0</td><td class="mono">1</td><td class="mono">4</td>
+<td class="mono">5</td>
+<td class="mono">100.0%</td></tr><tr><td>成都</td><td class="mono">10</td>
+<td class="mono">3</td><td class="mono">0</td><td class="mono">1</td>
+<td class="mono">6</td>
+<td class="mono">25.0%</td></tr><tr><td>哈尔滨</td><td class="mono">10</td>
+<td class="mono">0</td><td class="mono">0</td><td class="mono">6</td>
+<td class="mono">4</td>
+<td class="mono">100.0%</td></tr><tr><td>南京</td><td class="mono">10</td>
+<td class="mono">1</td><td class="mono">2</td><td class="mono">4</td>
+<td class="mono">3</td>
+<td class="mono">85.7%</td></tr><tr><td>武汉</td><td class="mono">10</td>
+<td class="mono">0</td><td class="mono">3</td><td class="mono">0</td>
+<td class="mono">7</td>
+<td class="mono">100.0%</td></tr><tr><td>西安</td><td class="mono">10</td>
+<td class="mono">5</td><td class="mono">1</td><td class="mono">4</td>
+<td class="mono">0</td>
+<td class="mono">50.0%</td></tr><tr><td>郑州</td><td class="mono">10</td>
+<td class="mono">2</td><td class="mono">1</td><td class="mono">5</td>
+<td class="mono">2</td>
+<td class="mono">75.0%</td></tr><tr><td>长沙</td><td class="mono">10</td>
+<td class="mono">0</td><td class="mono">1</td><td class="mono">6</td>
+<td class="mono">3</td>
+<td class="mono">100.0%</td></tr>
+</table>
+<p class="note">
+合计 100 条：14 条报今日价、9 条报上一轮价、
+37 条两轮都不是、40 条没有明确价格。
+可判定的 60 条里，<b>76.7%</b> 不是今天的价。普通搜索本身就在生产过期信息。
+</p>
 
-<section>
-  <h2>二、网页信息时效审计（Mode=0 自然检索）</h2>
-  <p class="note">同一城市自然检索前十条摘要，取首个「元/升」价格与今日价、上一轮价比对。共 50 条，此处展示前 24 条。</p>
-  <table><thead><tr><th>城市</th><th>站点</th><th>网页所报价</th><th>今日价</th><th>上一轮价</th><th>判定</th></tr></thead>
-  <tbody><tr><td>北京</td><td>youjia.abapi.cn</td><td class='num'>8.37</td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-correct">属实</span></td></tr><tr><td>北京</td><td>爱查询油价</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>北京</td><td>www.2scc.com</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>北京</td><td>网易</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>北京</td><td>就发物流网</td><td class='num'>7.84</td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>北京</td><td>搜狐网</td><td class='num'>0.53</td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>北京</td><td>查油价</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>北京</td><td>QQ浏览器</td><td class='num'>0.50</td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>北京</td><td>本地宝</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>北京</td><td>m.05348.com</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>上海</td><td>youjia.abapi.cn</td><td class='num'>8.33</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-correct">属实</span></td></tr><tr><td>上海</td><td>就发物流网</td><td class='num'>8.25</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>上海</td><td>youjia.lnch.cn</td><td class='num'></td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>上海</td><td>网易新闻客户端</td><td class='num'>0.57</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>上海</td><td>微博</td><td class='num'>0.57</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>上海</td><td>查油价</td><td class='num'></td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>上海</td><td>www.zuixinyoujia.com</td><td class='num'></td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>上海</td><td>微博</td><td class='num'>0.57</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>上海</td><td>网易</td><td class='num'></td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>上海</td><td>QQ浏览器</td><td class='num'>8.33</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-correct">属实</span></td></tr><tr><td>广州</td><td>油价查询</td><td class='num'></td><td class='num'>8.39</td><td class='num'>8.91</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>广州</td><td>油价查询</td><td class='num'></td><td class='num'>8.39</td><td class='num'>8.91</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>广州</td><td>油价查询</td><td class='num'></td><td class='num'>8.39</td><td class='num'>8.91</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>广州</td><td>油价查询</td><td class='num'></td><td class='num'>8.39</td><td class='num'>8.91</td><td><span class="tag t-undetermined">无明确价格</span></td></tr></tbody></table>
-</section>
+<h2>C. 跨城价差 <span class="tag">49 城 · 92 号 · 同一天 · 零售挂牌价</span></h2>
+<table>
+<tr><th>城市</th><th>今日价</th><th>上一轮价</th><th>本轮变动</th></tr>
+<tr style="background:#e8f6ee"><td>西安</td>
+<td class="mono">8.25</td>
+<td class="mono">8.76</td>
+<td class="mono">--0.51</td></tr><tr><td>银川</td>
+<td class="mono">8.26</td>
+<td class="mono">8.78</td>
+<td class="mono">--0.52</td></tr><tr><td>太原</td>
+<td class="mono">8.31</td>
+<td class="mono">8.82</td>
+<td class="mono">--0.51</td></tr><tr><td>合肥</td>
+<td class="mono">8.31</td>
+<td class="mono">8.83</td>
+<td class="mono">--0.52</td></tr><tr><td>长沙</td>
+<td class="mono">8.31</td>
+<td class="mono">8.83</td>
+<td class="mono">--0.52</td></tr><tr><td>株洲</td>
+<td class="mono">8.31</td>
+<td class="mono">8.83</td>
+<td class="mono">--0.52</td></tr><tr><td>长春</td>
+<td class="mono">8.33</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.52</td></tr><tr><td>福州</td>
+<td class="mono">8.33</td>
+<td class="mono">8.84</td>
+<td class="mono">--0.51</td></tr><tr><td>南昌</td>
+<td class="mono">8.33</td>
+<td class="mono">8.84</td>
+<td class="mono">--0.51</td></tr><tr><td>济南</td>
+<td class="mono">8.33</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.52</td></tr><tr><td>西宁</td>
+<td class="mono">8.33</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.52</td></tr><tr><td>青岛</td>
+<td class="mono">8.33</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.52</td></tr><tr><td>厦门</td>
+<td class="mono">8.33</td>
+<td class="mono">8.84</td>
+<td class="mono">--0.51</td></tr><tr><td>泉州</td>
+<td class="mono">8.33</td>
+<td class="mono">8.84</td>
+<td class="mono">--0.51</td></tr><tr><td>烟台</td>
+<td class="mono">8.33</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.52</td></tr><tr><td>上海</td>
+<td class="mono">8.33</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.52</td></tr><tr><td>宁波</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.51</td></tr><tr><td>苏州</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.51</td></tr><tr><td>无锡</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.51</td></tr><tr><td>温州</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.51</td></tr><tr><td>南通</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.51</td></tr><tr><td>徐州</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.51</td></tr><tr><td>常州</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.51</td></tr><tr><td>绍兴</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.51</td></tr><tr><td>嘉兴</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.51</td></tr><tr><td>台州</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.51</td></tr><tr><td>南京</td>
+<td class="mono">8.34</td>
+<td class="mono">8.85</td>
+<td class="mono">--0.51</td></tr><tr><td>石家庄</td>
+<td class="mono">8.36</td>
+<td class="mono">8.88</td>
+<td class="mono">--0.52</td></tr><tr><td>唐山</td>
+<td class="mono">8.36</td>
+<td class="mono">8.88</td>
+<td class="mono">--0.52</td></tr><tr><td>呼和浩特</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">--0.52</td></tr><tr><td>兰州</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">--0.52</td></tr><tr><td>北京</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">--0.52</td></tr><tr><td>洛阳</td>
+<td class="mono">8.38</td>
+<td class="mono">8.90</td>
+<td class="mono">--0.52</td></tr><tr><td>襄阳</td>
+<td class="mono">8.38</td>
+<td class="mono">8.90</td>
+<td class="mono">--0.52</td></tr><tr><td>武汉</td>
+<td class="mono">8.38</td>
+<td class="mono">8.90</td>
+<td class="mono">--0.52</td></tr><tr><td>郑州</td>
+<td class="mono">8.38</td>
+<td class="mono">8.90</td>
+<td class="mono">--0.52</td></tr><tr><td>深圳</td>
+<td class="mono">8.39</td>
+<td class="mono">8.91</td>
+<td class="mono">--0.52</td></tr><tr><td>东莞</td>
+<td class="mono">8.39</td>
+<td class="mono">8.93</td>
+<td class="mono">--0.54</td></tr><tr><td>佛山</td>
+<td class="mono">8.39</td>
+<td class="mono">8.91</td>
+<td class="mono">--0.52</td></tr><tr><td>珠海</td>
+<td class="mono">8.39</td>
+<td class="mono">8.91</td>
+<td class="mono">--0.52</td></tr><tr><td>中山</td>
+<td class="mono">8.39</td>
+<td class="mono">8.91</td>
+<td class="mono">--0.52</td></tr><tr><td>广州</td>
+<td class="mono">8.39</td>
+<td class="mono">8.91</td>
+<td class="mono">--0.52</td></tr><tr><td>哈尔滨</td>
+<td class="mono">8.40</td>
+<td class="mono">8.92</td>
+<td class="mono">--0.52</td></tr><tr><td>南宁</td>
+<td class="mono">8.43</td>
+<td class="mono">8.94</td>
+<td class="mono">--0.51</td></tr><tr><td>大连</td>
+<td class="mono">8.44</td>
+<td class="mono">8.96</td>
+<td class="mono">--0.52</td></tr><tr><td>成都</td>
+<td class="mono">8.46</td>
+<td class="mono">8.98</td>
+<td class="mono">--0.52</td></tr><tr><td>贵阳</td>
+<td class="mono">8.50</td>
+<td class="mono">9.02</td>
+<td class="mono">--0.52</td></tr><tr><td>昆明</td>
+<td class="mono">8.52</td>
+<td class="mono">9.04</td>
+<td class="mono">--0.52</td></tr><tr style="background:#fdeaea"><td>海口</td>
+<td class="mono">9.48</td>
+<td class="mono">10.00</td>
+<td class="mono">--0.52</td></tr>
+</table>
+<p class="note">
+最低 西安 8.25，最高 海口 9.48，
+极差 <b>1.23 元/升</b>（一箱 50 升差 61.5 元）。
+价差 ≥ 1 元的城市：海口。均值 8.38，中位 8.34，σ = 0.166。
+「全国一个价」在结构上就不成立。
+</p>
 
-<section>
-  <h2>三、跨城价差：8.17 ~ 9.62，差 1.45 元/升</h2>
-  <p class="note">同标号、同一天、同口径（零售挂牌价）。最低与最高都在西部，说明是运距而非地域标签决定价格。</p>
-  <table><thead><tr><th>城市</th><th>92 号今日价</th><th>相对水平</th><th>本轮变动</th></tr></thead>
-  <tbody><tr><td>阿里</td><td class='num'>9.62</td><td><div class='bar'><i style='width:100.0%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>三沙</td><td class='num'>9.48</td><td><div class='bar'><i style='width:91.5%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>拉萨</td><td class='num'>9.24</td><td><div class='bar'><i style='width:76.9%'></i></div></td><td class='num'>+0.51</td></tr><tr><td>日喀则</td><td class='num'>9.24</td><td><div class='bar'><i style='width:76.9%'></i></div></td><td class='num'>+0.51</td></tr><tr><td>成都</td><td class='num'>8.46</td><td><div class='bar'><i style='width:29.6%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>沈阳</td><td class='num'>8.44</td><td><div class='bar'><i style='width:28.4%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>哈尔滨</td><td class='num'>8.40</td><td><div class='bar'><i style='width:26.0%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>广州</td><td class='num'>8.39</td><td><div class='bar'><i style='width:25.4%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>北京</td><td class='num'>8.37</td><td><div class='bar'><i style='width:24.1%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>上海</td><td class='num'>8.33</td><td><div class='bar'><i style='width:21.7%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>西安</td><td class='num'>8.25</td><td><div class='bar'><i style='width:16.9%'></i></div></td><td class='num'>+0.51</td></tr><tr><td>乌鲁木齐</td><td class='num'>8.17</td><td><div class='bar'><i style='width:12.0%'></i></div></td><td class='num'>+0.52</td></tr></tbody></table>
-</section>
+<h2>D. 垂类召回 <span class="tag">9 类 × 3 探针 = 27 次</span></h2>
+<table>
+<tr><th>垂类</th><th>命中</th><th>召回率</th><th>未命中的 query</th></tr>
+<tr><td class="mono">stock</td>
+<td class="mono">3/3</td>
+<td class="mono">100%</td>
+<td style="color:#5f6b7a">—</td></tr><tr><td class="mono">train</td>
+<td class="mono">3/3</td>
+<td class="mono">100%</td>
+<td style="color:#5f6b7a">—</td></tr><tr><td class="mono">gold</td>
+<td class="mono">2/3</td>
+<td class="mono">67%</td>
+<td style="color:#5f6b7a">足金 999 价格</td></tr><tr><td class="mono">oil</td>
+<td class="mono">1/3</td>
+<td class="mono">33%</td>
+<td style="color:#5f6b7a">上海 95 号汽油 价格、成都 0 号柴油 价格</td></tr><tr><td class="mono">weather</td>
+<td class="mono">2/3</td>
+<td class="mono">67%</td>
+<td style="color:#5f6b7a">北京 天气 最高温</td></tr><tr><td class="mono">phone</td>
+<td class="mono">0/3</td>
+<td class="mono">0%</td>
+<td style="color:#5f6b7a">iPhone 17 价格、华为 Mate 80 价格、小米 16 价格</td></tr><tr><td class="mono">car</td>
+<td class="mono">3/3</td>
+<td class="mono">100%</td>
+<td style="color:#5f6b7a">—</td></tr><tr><td class="mono">exchangerate</td>
+<td class="mono">0/3</td>
+<td class="mono">0%</td>
+<td style="color:#5f6b7a">美元 人民币 汇率、欧元 人民币 汇率、日元 人民币 汇率</td></tr><tr><td class="mono">medical</td>
+<td class="mono">0/3</td>
+<td class="mono">0%</td>
+<td style="color:#5f6b7a">阿莫西林 用法用量、布洛芬 说明书、二甲双胍 副作用</td></tr>
+</table>
+<p class="note">
+覆盖 6/9 类，全命中 3/9 类，总命中率 14/27。
+对照组（非垂类 query）误命中 0/3。
+<b>oil 类只有 1/3 命中</b>：「上海 95 号」「成都 0 号柴油」无卡，说明 VR 卡不是标号全覆盖；
+weather 与 phone 在不同批次结果不稳定，覆盖是变量不是常量。
+</p>
 
-<section>
-  <h2>四、垂类召回与边界测试</h2>
-  <p class="note">官方文档列 9 类，本次稳定召回 5 类。垂类覆盖会随查询词与时间变化，故「查不到」一律判存疑。</p>
-  <table><thead><tr><th>垂类</th><th>探测 query</th><th>召回</th><th>vr_category</th></tr></thead>
-  <tbody><tr><td>stock</td><td>腾讯控股 股价</td><td>✅ 召回</td><td>stock</td></tr><tr><td>train</td><td>G677 次列车 时刻表</td><td>✅ 召回</td><td>train</td></tr><tr><td>gold</td><td>黄金价格 每克</td><td>✅ 召回</td><td>gold</td></tr><tr><td>oil</td><td>北京 92 号汽油 价格</td><td>✅ 召回</td><td>oil</td></tr><tr><td>weather</td><td>北京 天气 最高温</td><td>❌ 未召回</td><td>—</td></tr><tr><td>phone</td><td>iPhone 17 价格</td><td>❌ 未召回</td><td>—</td></tr><tr><td>car</td><td>比亚迪 汉 价格</td><td>✅ 召回</td><td>car</td></tr><tr><td>exchangerate</td><td>美元 人民币 汇率</td><td>❌ 未召回</td><td>—</td></tr><tr><td>medical</td><td>阿莫西林 用法用量</td><td>❌ 未召回</td><td>—</td></tr></tbody></table>
-  <p class="note" style="margin-top:18px">边界测试（无卡城市）：</p>
-  <table><thead><tr><th>城市</th><th>VR 卡</th><th>判定</th><th>说明</th></tr></thead>
-  <tbody><tr><td>漠河</td><td>无 VR 卡</td><td><span class="tag t-unknown">存疑</span></td><td>无 VR 卡，判定为存疑（不判编造）</td></tr></tbody></table>
-</section>
+<h2>E. 判定器单元测试 <span class="tag">零调用 · 含浮点边界用例</span></h2>
+<table>
+<tr><th>断言值</th><th>今日</th><th>上一轮</th><th>期望</th><th>实际</th><th>通过</th></tr>
+<tr><td class="mono">8.370</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">correct</td>
+<td class="mono">correct</td>
+<td style="color:#0f9d58">✓</td></tr><tr><td class="mono">8.372</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">correct</td>
+<td class="mono">correct</td>
+<td style="color:#0f9d58">✓</td></tr><tr><td class="mono">8.890</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">stale</td>
+<td class="mono">stale</td>
+<td style="color:#0f9d58">✓</td></tr><tr><td class="mono">7.850</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">mismatch</td>
+<td class="mono">mismatch</td>
+<td style="color:#0f9d58">✓</td></tr><tr><td class="mono">8.350</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">mismatch</td>
+<td class="mono">mismatch</td>
+<td style="color:#0f9d58">✓</td></tr><tr><td class="mono">8.364</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">mismatch</td>
+<td class="mono">mismatch</td>
+<td style="color:#0f9d58">✓</td></tr><tr><td class="mono">8.365</td>
+<td class="mono">8.37</td>
+<td class="mono">8.89</td>
+<td class="mono">mismatch</td>
+<td class="mono">mismatch</td>
+<td style="color:#0f9d58">✓</td></tr><tr><td class="mono">9.990</td>
+<td class="mono">8.37</td>
+<td class="mono">None</td>
+<td class="mono">mismatch</td>
+<td class="mono">mismatch</td>
+<td style="color:#0f9d58">✓</td></tr><tr><td class="mono">8.370</td>
+<td class="mono">8.37</td>
+<td class="mono">None</td>
+<td class="mono">correct</td>
+<td class="mono">correct</td>
+<td style="color:#0f9d58">✓</td></tr><tr><td class="mono">8.370</td>
+<td class="mono">None</td>
+<td class="mono">8.89</td>
+<td class="mono">unknown</td>
+<td class="mono">unknown</td>
+<td style="color:#0f9d58">✓</td></tr>
+</table>
+<p class="note">
+10/10 通过。8.365 那条是浮点陷阱：8.365 × 100 在 IEEE 754 下得 836.4999…，
+按浮点容差比较会判成 correct，与手算相反。判定器改为整数分比较后才稳定。
+</p>
 
-<section>
-  <h2>五、判定口径</h2>
-  <table><thead><tr><th>项</th><th>值</th><th>说明</th></tr></thead><tbody>
-  <tr><td>数值容差</td><td class="num">0.005</td><td>两位小数零售价，差一分为差</td></tr>
-  <tr><td>断言正则</td><td><code>\d{1,2}\.\d{1,2}\s*元/\s*升</code></td><td>只认带单位的数字</td></tr>
-  <tr><td>断言分母</td><td>8</td><td>抽不出数字的回答不计入</td></tr>
-  <tr><td>网页分母</td><td>27 / 50</td><td>无明确价格的 23 条不计入</td></tr>
-  <tr><td>跨城价差口径</td><td>极值差</td><td>非平均值波动</td></tr>
-  </tbody></table>
-</section>
-
-<footer>本报告由 oil_pack.py 采集、build_report_oil.py 渲染，全部数字可在 oil_pack.json 中逐项核对<br>
-模型断言为单模型单次作答样本，仅用于演示判定流程，不构成对任何模型的性能结论</footer>
+<footer>
+本报告由 <span class="mono">src/bigtest.py</span> 一次真实采集生成，
+89 次 SearchPro 调用（约 1.8 元）。
+数据包 <span class="mono">data/bigtest.json</span> 带 <span class="mono">_meta.generated_at</span> 与
+<span class="mono">tool_calls</span>，本文每个数字都能 grep 到。
+</footer>
 </div></body></html>

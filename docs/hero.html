@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>项目架构插画 16:9</title>
+<style>
+  *{margin:0;box-sizing:border-box}
+  body{width:1920px;height:1080px;overflow:hidden;
+       font:16px/1.6 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+       background:#0d1117;color:#e8edf3}
+  .stage{position:relative;width:1920px;height:1080px;padding:54px 70px}
+  h1{font-size:42px;font-weight:700;letter-spacing:-.5px}
+  h1 span{color:#58a6ff}
+  .sub{color:#8b949e;font-size:20px;margin-top:8px}
+
+  .flow{position:absolute;left:70px;top:190px;width:1780px;height:330px;
+        display:flex;align-items:center;gap:0}
+  .step{background:#161b22;border:1px solid #30363d;border-radius:14px;
+        padding:24px 26px;width:262px;position:relative}
+  .step .n{position:absolute;top:-16px;left:22px;width:32px;height:32px;border-radius:50%;
+           background:#1f6feb;color:#fff;display:flex;align-items:center;justify-content:center;
+           font-weight:700;font-size:15px}
+  .step h3{font-size:19px;margin:8px 0 8px;font-weight:650}
+  .step p{font-size:14.5px;color:#8b949e;line-height:1.55}
+  .step .mono{font-family:ui-monospace,Consolas,monospace;font-size:13px;color:#79c0ff;
+              background:#0d1117;border:1px solid #30363d;padding:6px 9px;border-radius:6px;
+              display:inline-block;margin-top:10px}
+  .arrow{flex:1;text-align:center;color:#30363d;font-size:34px;line-height:1}
+  .arrow b{color:#1f6feb;font-weight:400}
+
+  .verdict{position:absolute;left:70px;top:560px;width:880px;height:420px;
+           background:#161b22;border:1px solid #30363d;border-radius:14px;padding:28px 30px}
+  .verdict h2{font-size:22px;margin-bottom:6px}
+  .verdict .cap{color:#8b949e;font-size:14px;margin-bottom:20px}
+  .states{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .st{border-radius:10px;padding:16px 18px;background:#0d1117;border-left:4px solid}
+  .st b{display:block;font-family:ui-monospace,Consolas,monospace;font-size:14px;margin-bottom:6px}
+  .st p{font-size:13.5px;color:#8b949e;line-height:1.5}
+  .st.correct{border-color:#3fb950} .st.correct b{color:#3fb950}
+  .st.stale{border-color:#d29922} .st.stale b{color:#d29922}
+  .st.mismatch{border-color:#f85149} .st.mismatch b{color:#f85149}
+  .st.unknown{border-color:#6e7681} .st.unknown b{color:#6e7681}
+
+  .facts{position:absolute;right:70px;top:560px;width:900px;height:420px;
+         background:#161b22;border:1px solid #30363d;border-radius:14px;padding:28px 30px}
+  .facts h2{font-size:22px;margin-bottom:6px}
+  .facts .cap{color:#8b949e;font-size:14px;margin-bottom:18px}
+  .fact{display:flex;align-items:baseline;gap:14px;padding:9px 0;
+        border-bottom:1px dashed #21262d}
+  .fact:last-child{border:0}
+  .fact .k{font-size:15px;color:#8b949e;width:290px;flex-shrink:0}
+  .fact .v{font-size:17px;font-weight:650;color:#e8edf3;font-variant-numeric:tabular-nums}
+  .fact .v em{font-style:normal;color:#f85149;font-weight:700}
+  .fact .v i{font-style:normal;color:#3fb950;font-weight:600}
+
+  .foot{position:absolute;left:70px;bottom:34px;right:70px;
+        display:flex;justify-content:space-between;color:#8b949e;font-size:13.5px;
+        border-top:1px solid #21262d;padding-top:16px}
+  .foot .mono{font-family:ui-monospace,Consolas,monospace;color:#79c0ff}
+</style>
+</head>
+<body>
+<div class="stage">
+  <h1>油价真伪卡 <span>· oil-price-truthcard</span></h1>
+  <p class="sub">一句 AI 报价进来，四个判定结果出去。判据是元宝搜索成品油 VR 卡里同时存在的「今日价 / 上一轮价」。</p>
+
+  <div class="flow">
+    <div class="step"><div class="n">1</div>
+      <h3>收到待验报价</h3>
+      <p>城市 + 一句 AI 回答，抽取其中的价格数字。抽不到不硬抽，判「无可核验断言」。</p>
+      <span class="mono">7.85 元/升</span>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">2</div>
+      <h3>调元宝搜索</h3>
+      <p>SearchPro · Mode=1，只收 vr_category=oil 的成品油卡。</p>
+      <span class="mono">{city} 92 号汽油 价格</span>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">3</div>
+      <h3>取官方双价</h3>
+      <p>同一条卡里同时有「今日」和「上一轮」，判断依据是现成的。</p>
+      <span class="mono">8.36 / 8.88</span>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">4</div>
+      <h3>四态判定</h3>
+      <p>按整数分比较，两位小数零售价差一分即差。</p>
+      <span class="mono">judge(7.85, 8.36, 8.88)</span>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <h2>四种状态，不是两种</h2>
+    <p class="cap">把「过期」和「编造」分开，是这个工具跟所有「幻觉检测器」的区别。</p>
+    <div class="states">
+      <div class="st correct"><b>correct · 属实</b><p>等于今日价。回答是新鲜的。</p></div>
+      <div class="st stale"><b>stale · 已过期</b><p>等于上一轮价。它曾经是真的，不是编的。</p></div>
+      <div class="st mismatch"><b>mismatch · 不符</b><p>今日、上一轮都不是。给出两个官方值供对照。</p></div>
+      <div class="st unknown"><b>unknown · 存疑</b><p>无 VR 卡。不降级、不猜、不借邻省价。</p></div>
+    </div>
+  </div>
+
+  <div class="facts">
+    <h2>实测数字（2026-11-14）</h2>
+    <p class="cap">40 城盲测 + 100 条网页审计 + 49 城价差，全部来自一次真实采集，数据包可复核。</p>
+    <div class="fact"><span class="k">AI 盲测报价（40 城）</span>
+      <span class="v">全部 <em>mismatch</em>，无一条命中</span></div>
+    <div class="fact"><span class="k">AI 报价分布</span>
+      <span class="v">7.74 ~ 8.10 元/升（σ = 0.103）</span></div>
+    <div class="fact"><span class="k">官方价分布</span>
+      <span class="v">8.26 ~ 9.48 元/升（σ = 0.182）</span></div>
+    <div class="fact"><span class="k">两个分布</span>
+      <span class="v"><i>完全不重叠</i> —— 间隔 0.16 元/升</span></div>
+    <div class="fact"><span class="k">网页报价有误率</span>
+      <span class="v">100 条中可判定 60 条，<em>76.7%</em> 不是今日价</span></div>
+    <div class="fact"><span class="k">49 城价差</span>
+      <span class="v">8.25（西安）~ 9.48（海口），极差 1.23 元/升</span></div>
+    <div class="fact"><span class="k">采集成本</span>
+      <span class="v">89 次 SearchPro，约 1.8 元</span></div>
+  </div>
+
+  <div class="foot">
+    <span>数据源：<span class="mono">wsa.tencentcloudapi.com · SearchPro · v2025-05-08</span></span>
+    <span>代码与数据包：<span class="mono">github.com/yourname/oil-price-truthcard</span></span>
+    <span>单机 · 零第三方依赖 · TC3 签名手写</span>
+  </div>
+</div>
+</body>
+</html>
