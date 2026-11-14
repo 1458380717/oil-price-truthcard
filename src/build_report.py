@@ -143,7 +143,7 @@ font-size:12.5px;color:var(--muted);line-height:1.7}}
 <p class="note">
 AI 报价集中在 {a['asserted_range'][0]:.2f} ~ {a['asserted_range'][1]:.2f}（σ = {a['asserted_std']}），
 官方价在 {a['today_range'][0]:.2f} ~ {a['today_range'][1]:.2f}（σ = {a['today_std']}），
-两个区间<b>零重叠</b>。平均低估 {abs(a['gap_mean']):.2f} 元/升，最大低估 {abs(a['gap_min']):.2f}（昆明 7.95 vs 官方 9.38）。
+两个区间<b>零重叠</b>。平均低估 {abs(a['gap_mean']):.2f} 元/升，最大低估 {abs(a['gap_min']):.2f}（海口 8.05 vs 官方 9.48）。
 按一箱 50 升算，平均差 {abs(a['gap_mean'])*50:.0f} 元。
 </p>
 
