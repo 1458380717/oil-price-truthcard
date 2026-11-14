@@ -27,11 +27,11 @@ background:#fff;padding:3px 10px;border-radius:16px;margin-right:8px}
 footer{margin-top:36px;border-top:1px solid var(--line);padding-top:16px;
 font-size:12.5px;color:var(--muted);line-height:1.7}
 </style></head><body><div class="wrap">
-<h1>油价真伪卡 · 大规模实测报告 <small>生成于 2026-11-14 23:11:40</small></h1>
+<h1>油价真伪卡 · 大规模实测报告 <small>生成于 2026-11-14 23:39:57</small></h1>
 <p class="sub">
 <span class="chip">数据源 data/bigtest.json</span>
 <span class="chip">SearchPro 89 次真实调用</span>
-<span class="chip">耗时 36.5 秒</span>
+<span class="chip">耗时 41.4 秒</span>
 <span class="chip">判定器：整数分比较</span>
 </p>
 
@@ -297,6 +297,10 @@ AI 报价集中在 7.74 ~ 8.10（σ = 0.103），
 合计 100 条：14 条报今日价、9 条报上一轮价、
 37 条两轮都不是、40 条没有明确价格。
 可判定的 60 条里，<b>76.7%</b> 不是今天的价。普通搜索本身就在生产过期信息。
+</p>
+<p class="note">
+<b>转载去重后</b>：100 条里有 11 组是同标题不同站点（同一篇内容被搬运），按标题归一化去重后剩 89 条独立内容，
+可判定 53 条，有误 42 条，<b>79.2%</b>。去重后有误率反而上升——转载不会稀释结论，只会虚增样本量。
 </p>
 
 <h2>C. 跨城价差 <span class="tag">49 城 · 92 号 · 同一天 · 零售挂牌价</span></h2>

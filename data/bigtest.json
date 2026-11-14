@@ -1,10 +1,10 @@
 {
  "_meta": {
-  "generated_at": "2026-11-14 23:11:40",
+  "generated_at": "2026-11-14 23:39:57",
   "script": "bigtest.py",
   "tool_calls": 89,
-  "elapsed_sec": 36.5,
-  "rerun_unit_at": "2026-11-14 23:13:01"
+  "elapsed_sec": 41.4,
+  "rerun_unit_at": "2026-11-14 23:45:46"
  },
  "assert_verify": {
   "n": 40,

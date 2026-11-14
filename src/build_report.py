@@ -27,6 +27,27 @@ def main(work="."):
     n_mis = a["dist"].get("mismatch", 0)
     err_rate = f"{w['error_rate']*100:.1f}%" if w["error_rate"] is not None else "—"
 
+    # 转载去重（标题归一化）：同一篇文章被多站搬运只计一次
+    import re as _re
+    def _norm(t):
+        t = _re.sub(r"[（(].*?[)）]", "", t or "")
+        t = _re.sub(r"[\s\-_|·,，。:：]", "", t)
+        t = _re.sub(r"20\d{2}年?\d{0,2}月?\d{0,2}日?", "", t)
+        return _re.sub(r"\d+", "", t).lower()
+    seen, uniq_rows = set(), []
+    for r in w["rows"]:
+        k = _norm(r["title"])
+        if k in seen:
+            continue
+        seen.add(k)
+        uniq_rows.append(r)
+    ud = {}
+    for r in uniq_rows:
+        ud[r["state"]] = ud.get(r["state"], 0) + 1
+    u_dec = sum(vv for kk, vv in ud.items() if kk in ("correct", "stale", "mismatch"))
+    u_err = ud.get("stale", 0) + ud.get("mismatch", 0)
+    dup_groups = len(w["rows"]) - len(uniq_rows)
+
     # 40 城断言表
     ar = []
     for r in a["results"]:
@@ -156,6 +177,10 @@ AI 报价集中在 {a['asserted_range'][0]:.2f} ~ {a['asserted_range'][1]:.2f}�
 合计 {w['n']} 条：{w['dist'].get('correct',0)} 条报今日价、{w['dist'].get('stale',0)} 条报上一轮价、
 {w['dist'].get('mismatch',0)} 条两轮都不是、{w['dist'].get('undetermined',0)} 条没有明确价格。
 可判定的 {w['decidable']} 条里，<b>{w['error_rate']*100:.1f}%</b> 不是今天的价。普通搜索本身就在生产过期信息。
+</p>
+<p class="note">
+<b>转载去重后</b>：100 条里有 {dup_groups} 组是同标题不同站点（同一篇内容被搬运），按标题归一化去重后剩 {len(uniq_rows)} 条独立内容，
+可判定 {u_dec} 条，有误 {u_err} 条，<b>{u_err/u_dec*100:.1f}%</b>。去重后有误率反而上升——转载不会稀释结论，只会虚增样本量。
 </p>
 
 <h2>C. 跨城价差 <span class="tag">{c['n']} 城 · 92 号 · 同一天 · 零售挂牌价</span></h2>

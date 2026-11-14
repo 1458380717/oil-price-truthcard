@@ -1,0 +1,22 @@
+name: reproducibility
+
+# 零密钥复现：每次提交在干净环境验证「文章承诺的数字 == 数据包里的数字」。
+# 任何一项对不上，CI 直接变红，而不是静默通过。
+
+on: [push, workflow_dispatch]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 判定器单元测试（零 API 调用）
+        run: python src/bigtest.py --only unit
+
+      - name: 数据包与文章承诺逐项对账
+        run: python src/check_pack.py
