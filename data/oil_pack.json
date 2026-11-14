@@ -1,0 +1,916 @@
+{
+ "_meta": {
+  "generated_at": "2026-11-14 22:59:53",
+  "tool_calls": 36,
+  "elapsed_sec": 7.8
+ },
+ "price_verify": {
+  "results": [
+   {
+    "model": "WorkBuddy 助手（无联网，纯记忆作答）",
+    "qid": "O01",
+    "city": "南京",
+    "asserted": 7.85,
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "date": "11月14日油价",
+    "verdict": "mismatch"
+   },
+   {
+    "model": "WorkBuddy 助手（无联网，纯记忆作答）",
+    "qid": "O02",
+    "city": "杭州",
+    "asserted": 7.88,
+    "official_today": 8.34,
+    "official_history": 8.85,
+    "date": "11月14日油价",
+    "verdict": "mismatch"
+   },
+   {
+    "model": "WorkBuddy 助手（无联网，纯记忆作答）",
+    "qid": "O03",
+    "city": "武汉",
+    "asserted": 7.8,
+    "official_today": 8.38,
+    "official_history": 8.9,
+    "date": "11月14日油价",
+    "verdict": "mismatch"
+   },
+   {
+    "model": "WorkBuddy 助手（无联网，纯记忆作答）",
+    "qid": "O04",
+    "city": "西安",
+    "asserted": 7.75,
+    "official_today": 8.25,
+    "official_history": 8.76,
+    "date": "11月14日油价",
+    "verdict": "mismatch"
+   },
+   {
+    "model": "WorkBuddy 助手（无联网，纯记忆作答）",
+    "qid": "O05",
+    "city": "郑州",
+    "asserted": 7.78,
+    "official_today": 8.38,
+    "official_history": 8.9,
+    "date": "11月14日油价",
+    "verdict": "mismatch"
+   },
+   {
+    "model": "WorkBuddy 助手（无联网，纯记忆作答）",
+    "qid": "O06",
+    "city": "重庆",
+    "asserted": 7.9,
+    "official_today": 8.43,
+    "official_history": 8.94,
+    "date": "11月14日油价",
+    "verdict": "mismatch"
+   },
+   {
+    "model": "WorkBuddy 助手（无联网，纯记忆作答）",
+    "qid": "O07",
+    "city": "天津",
+    "asserted": 7.82,
+    "official_today": 8.36,
+    "official_history": 8.88,
+    "date": "11月14日油价",
+    "verdict": "mismatch"
+   },
+   {
+    "model": "WorkBuddy 助手（无联网，纯记忆作答）",
+    "qid": "O08",
+    "city": "沈阳",
+    "asserted": 7.76,
+    "official_today": 8.44,
+    "official_history": 8.96,
+    "date": "11月14日油价",
+    "verdict": "mismatch"
+   }
+  ],
+  "summary": {
+   "mismatch": 8
+  },
+  "n": 8,
+  "official": {
+   "南京": {
+    "date": "11月14日油价",
+    "city": "南京",
+    "grades": {
+     "92": {
+      "today": 8.34,
+      "history": 8.85
+     },
+     "95": {
+      "today": 8.87,
+      "history": 9.41
+     },
+     "98": {
+      "today": 10.94,
+      "history": 11.48
+     },
+     "0": {
+      "today": 8.01,
+      "history": 8.55
+     }
+    },
+    "_query": "南京 92 号汽油 价格",
+    "_site": "齐车大圣",
+    "_url": "https://mys4s.cn/h5/oil/index.html?source=sogou&region=南京"
+   },
+   "杭州": {
+    "date": "11月14日油价",
+    "city": "杭州",
+    "grades": {
+     "92": {
+      "today": 8.34,
+      "history": 8.85
+     },
+     "95": {
+      "today": 8.87,
+      "history": 9.42
+     },
+     "98": {
+      "today": 10.37,
+      "history": 10.92
+     },
+     "0": {
+      "today": 8.03,
+      "history": 8.57
+     }
+    },
+    "_query": "杭州 92 号汽油 价格",
+    "_site": "齐车大圣",
+    "_url": "https://mys4s.cn/h5/oil/index.html?source=sogou&region=杭州"
+   },
+   "武汉": {
+    "date": "11月14日油价",
+    "city": "武汉",
+    "grades": {
+     "92": {
+      "today": 8.38,
+      "history": 8.9
+     },
+     "95": {
+      "today": 8.97,
+      "history": 9.53
+     },
+     "89": {
+      "today": 7.5,
+      "history": 7.96
+     },
+     "0": {
+      "today": 8.04,
+      "history": 8.58
+     }
+    },
+    "_query": "武汉 92 号汽油 价格",
+    "_site": "本地宝",
+    "_url": "http://m.wh.bendibao.com/news/youjiachaxun/"
+   },
+   "西安": {
+    "date": "11月14日油价",
+    "city": "西安",
+    "grades": {
+     "92": {
+      "today": 8.25,
+      "history": 8.76
+     },
+     "95": {
+      "today": 8.72,
+      "history": 9.26
+     },
+     "89": {
+      "today": 7.78,
+      "history": 8.27
+     },
+     "0": {
+      "today": 7.94,
+      "history": 8.47
+     }
+    },
+    "_query": "西安 92 号汽油 价格",
+    "_site": "本地宝",
+    "_url": "http://m.xa.bendibao.com/news/youjiachaxun/"
+   },
+   "郑州": {
+    "date": "11月14日油价",
+    "city": "郑州",
+    "grades": {
+     "92": {
+      "today": 8.38,
+      "history": 8.9
+     },
+     "95": {
+      "today": 8.95,
+      "history": 9.5
+     },
+     "0": {
+      "today": 8.04,
+      "history": 8.58
+     }
+    },
+    "_query": "郑州 92 号汽油 价格",
+    "_site": "本地宝",
+    "_url": "http://m.zz.bendibao.com/news/youjiachaxun/"
+   },
+   "重庆": {
+    "date": "11月14日油价",
+    "city": "重庆",
+    "grades": {
+     "92": {
+      "today": 8.43,
+      "history": 8.94
+     },
+     "95": {
+      "today": 8.9,
+      "history": 9.45
+     },
+     "89": {
+      "today": 7.97,
+      "history": 8.45
+     },
+     "0": {
+      "today": 8.11,
+      "history": 8.64
+     }
+    },
+    "_query": "重庆 92 号汽油 价格",
+    "_site": "本地宝",
+    "_url": "http://m.cq.bendibao.com/news/youjiachaxun/"
+   },
+   "天津": {
+    "date": "11月14日油价",
+    "city": "天津",
+    "grades": {
+     "92": {
+      "today": 8.36,
+      "history": 8.88
+     },
+     "95": {
+      "today": 8.84,
+      "history": 9.39
+     },
+     "89": {
+      "today": 7.76,
+      "history": 8.24
+     },
+     "0": {
+      "today": 8.06,
+      "history": 8.6
+     }
+    },
+    "_query": "天津 92 号汽油 价格",
+    "_site": "本地宝",
+    "_url": "http://m.tj.bendibao.com/news/youjiachaxun/"
+   },
+   "沈阳": {
+    "date": "11月14日油价",
+    "city": "沈阳",
+    "grades": {
+     "92": {
+      "today": 8.44,
+      "history": 8.96
+     },
+     "95": {
+      "today": 9.02,
+      "history": 9.58
+     },
+     "0": {
+      "today": 7.95,
+      "history": 8.48
+     }
+    },
+    "_query": "沈阳 92 号汽油 价格",
+    "_site": "本地宝",
+    "_url": "http://m.sy.bendibao.com/news/youjiachaxun/"
+   }
+  }
+ },
+ "web_freshness": {
+  "rows": [
+   {
+    "city": "北京",
+    "site": "youjia.abapi.cn",
+    "title": "北京今日油价",
+    "claim": 8.37,
+    "verdict": "correct",
+    "official_today": 8.37,
+    "official_history": 8.89
+   },
+   {
+    "city": "北京",
+    "site": "爱查询油价",
+    "title": "北京今日油价",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.37,
+    "official_history": 8.89
+   },
+   {
+    "city": "北京",
+    "site": "www.2scc.com",
+    "title": "北京今日油价-北京汽油价格-北京柴油报价",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.37,
+    "official_history": 8.89
+   },
+   {
+    "city": "北京",
+    "site": "网易",
+    "title": "油价年内第六降!加满一箱省25元,下轮预计继续跌",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.37,
+    "official_history": 8.89
+   },
+   {
+    "city": "北京",
+    "site": "就发物流网",
+    "title": "北京油价-北京89_92_95号今日汽油价格-        北京油价查询",
+    "claim": 7.84,
+    "verdict": "mismatch",
+    "official_today": 8.37,
+    "official_history": 8.89
+   },
+   {
+    "city": "北京",
+    "site": "搜狐网",
+    "title": "今日油价 11月14日最新92,95汽油,0号柴油价格,今天汽柴油又大降,预跌300元/吨!",
+    "claim": 0.53,
+    "verdict": "mismatch",
+    "official_today": 8.37,
+    "official_history": 8.89
+   },
+   {
+    "city": "北京",
+    "site": "查油价",
+    "title": "北京今日油价-北京油价92_95号汽油价格-北京柴油价格",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.37,
+    "official_history": 8.89
+   },
+   {
+    "city": "北京",
+    "site": "QQ浏览器",
+    "title": "油价大降全国92汽油刚大涨接近9元/升,创今年次新高后已降5.2毛/升,下次11月26日调价,预跌300元/吨!",
+    "claim": 0.5,
+    "verdict": "mismatch",
+    "official_today": 8.37,
+    "official_history": 8.89
+   },
+   {
+    "city": "北京",
+    "site": "本地宝",
+    "title": "2026北京92号汽油价格最新消息(持续更新)",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.37,
+    "official_history": 8.89
+   },
+   {
+    "city": "北京",
+    "site": "m.05348.com",
+    "title": "今日最新油价",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.37,
+    "official_history": 8.89
+   },
+   {
+    "city": "上海",
+    "site": "youjia.abapi.cn",
+    "title": "上海今日油价",
+    "claim": 8.33,
+    "verdict": "correct",
+    "official_today": 8.33,
+    "official_history": 8.85
+   },
+   {
+    "city": "上海",
+    "site": "就发物流网",
+    "title": "上海油价-上海89_92_95号今日汽油价格-        上海油价查询",
+    "claim": 8.25,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.85
+   },
+   {
+    "city": "上海",
+    "site": "youjia.lnch.cn",
+    "title": "今日油价查询工具",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.33,
+    "official_history": 8.85
+   },
+   {
+    "city": "上海",
+    "site": "网易新闻客户端",
+    "title": "明天起,油价下调!",
+    "claim": 0.57,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.85
+   },
+   {
+    "city": "上海",
+    "site": "微博",
+    "title": "【降价!上海成品油价明起下调0.48-0.57元/升,一箱油约省26元】成品油价明起要下调啦,降幅为0.48-0.57元",
+    "claim": 0.57,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.85
+   },
+   {
+    "city": "上海",
+    "site": "查油价",
+    "title": "上海今日油价-上海油价92_95号汽油价格-上海柴油价格",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.33,
+    "official_history": 8.85
+   },
+   {
+    "city": "上海",
+    "site": "www.zuixinyoujia.com",
+    "title": "上海油价",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.33,
+    "official_history": 8.85
+   },
+   {
+    "city": "上海",
+    "site": "微博",
+    "title": "上海成品油价明起下调0.48-0.57元/升,一箱油约省26元",
+    "claim": 0.57,
+    "verdict": "mismatch",
+    "official_today": 8.33,
+    "official_history": 8.85
+   },
+   {
+    "city": "上海",
+    "site": "网易",
+    "title": "油价降0.49元一箱省26,比机构测算多降近一半",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.33,
+    "official_history": 8.85
+   },
+   {
+    "city": "上海",
+    "site": "QQ浏览器",
+    "title": "今晚24:00起,上海油价下调!",
+    "claim": 8.33,
+    "verdict": "correct",
+    "official_today": 8.33,
+    "official_history": 8.85
+   },
+   {
+    "city": "广州",
+    "site": "油价查询",
+    "title": "广州广茂加油站",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.39,
+    "official_history": 8.91
+   },
+   {
+    "city": "广州",
+    "site": "油价查询",
+    "title": "广州东江加油站",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.39,
+    "official_history": 8.91
+   },
+   {
+    "city": "广州",
+    "site": "油价查询",
+    "title": "广州良田加油站",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.39,
+    "official_history": 8.91
+   },
+   {
+    "city": "广州",
+    "site": "油价查询",
+    "title": "广州金华加油站",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.39,
+    "official_history": 8.91
+   },
+   {
+    "city": "广州",
+    "site": "youjia.abapi.cn",
+    "title": "广州今日油价",
+    "claim": 8.63,
+    "verdict": "mismatch",
+    "official_today": 8.39,
+    "official_history": 8.91
+   },
+   {
+    "city": "广州",
+    "site": "油价查询",
+    "title": "广州长岭加油站",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.39,
+    "official_history": 8.91
+   },
+   {
+    "city": "广州",
+    "site": "今日油价",
+    "title": "广州市今日油价(汽油跟柴油价格) 每日即时更新 单位:元/升 (数据来源自广东省)",
+    "claim": 8.63,
+    "verdict": "mismatch",
+    "official_today": 8.39,
+    "official_history": 8.91
+   },
+   {
+    "city": "广州",
+    "site": "QQ浏览器",
+    "title": "降了!广东最新油价公布",
+    "claim": 8.06,
+    "verdict": "mismatch",
+    "official_today": 8.39,
+    "official_history": 8.91
+   },
+   {
+    "city": "广州",
+    "site": "今日油价",
+    "title": "海珠区今日油价(汽油跟柴油价格) 每日即时更新 单位:元/升 (数据来源自广东省)",
+    "claim": 8.91,
+    "verdict": "stale",
+    "official_today": 8.39,
+    "official_history": 8.91
+   },
+   {
+    "city": "广州",
+    "site": "今日头条",
+    "title": "降了!广东最新油价公布",
+    "claim": 8.06,
+    "verdict": "mismatch",
+    "official_today": 8.39,
+    "official_history": 8.91
+   },
+   {
+    "city": "成都",
+    "site": "查油价",
+    "title": "成都今日油价-成都油价92_95号汽油价格-成都柴油价格",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.46,
+    "official_history": 8.98
+   },
+   {
+    "city": "成都",
+    "site": "新浪网",
+    "title": "四川油价调整:今日24时起,92号汽油8.46元/升､95号汽油9.04元/升､0号柴油8.09元/升",
+    "claim": 8.46,
+    "verdict": "correct",
+    "official_today": 8.46,
+    "official_history": 8.98
+   },
+   {
+    "city": "成都",
+    "site": "腾讯新闻",
+    "title": "今日油价:11月14日,全国加油站92､95汽油､0号柴油最新售价一览!",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.46,
+    "official_history": 8.98
+   },
+   {
+    "city": "成都",
+    "site": "www.2scc.com",
+    "title": "金堂今日油价-金堂汽油价格-金堂柴油报价",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.46,
+    "official_history": 8.98
+   },
+   {
+    "city": "成都",
+    "site": "www.2scc.com",
+    "title": "新都今日油价-新都汽油价格-新都柴油报价",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.46,
+    "official_history": 8.98
+   },
+   {
+    "city": "成都",
+    "site": "今日头条",
+    "title": "成都今晚调油价:92号汽油8.46元/升､95号汽油9.04元/升､0号柴油8.09元/升",
+    "claim": 8.46,
+    "verdict": "correct",
+    "official_today": 8.46,
+    "official_history": 8.98
+   },
+   {
+    "city": "成都",
+    "site": "驾照搜",
+    "title": "成都今日油价",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.46,
+    "official_history": 8.98
+   },
+   {
+    "city": "成都",
+    "site": "就发物流网",
+    "title": "成都武侯区油价-成都武侯区89_92_95号今日汽油价格- 成都武侯区油价查询",
+    "claim": 8.33,
+    "verdict": "mismatch",
+    "official_today": 8.46,
+    "official_history": 8.98
+   },
+   {
+    "city": "成都",
+    "site": "新浪财经头条",
+    "title": "今晚调油价!国内汽､柴油价格每吨分别下调645元､625元",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.46,
+    "official_history": 8.98
+   },
+   {
+    "city": "成都",
+    "site": "今日头条",
+    "title": "四川油价调整:今日24时起,92号汽油8.46元/升､95号汽油9.04元/升､0号柴油8.09元/升",
+    "claim": 8.46,
+    "verdict": "correct",
+    "official_today": 8.46,
+    "official_history": 8.98
+   },
+   {
+    "city": "哈尔滨",
+    "site": "油价查询",
+    "title": "哈尔滨油价",
+    "claim": 8.4,
+    "verdict": "correct",
+    "official_today": 8.4,
+    "official_history": 8.92
+   },
+   {
+    "city": "哈尔滨",
+    "site": "哈尔滨新闻网",
+    "title": "13日零时起哈尔滨油价下调95号汽油重回“8元时代”",
+    "claim": 8.97,
+    "verdict": "mismatch",
+    "official_today": 8.4,
+    "official_history": 8.92
+   },
+   {
+    "city": "哈尔滨",
+    "site": "youjia.7niu.com",
+    "title": "今日油价查询工具",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.4,
+    "official_history": 8.92
+   },
+   {
+    "city": "哈尔滨",
+    "site": "今日头条",
+    "title": "大降价!油价定了:加满一箱92号汽油可少花——",
+    "claim": 8.97,
+    "verdict": "mismatch",
+    "official_today": 8.4,
+    "official_history": 8.92
+   },
+   {
+    "city": "哈尔滨",
+    "site": "油价查询",
+    "title": "黑龙江油价",
+    "claim": 8.4,
+    "verdict": "correct",
+    "official_today": 8.4,
+    "official_history": 8.92
+   },
+   {
+    "city": "哈尔滨",
+    "site": "搜狐网",
+    "title": "近期加油优惠信息汇总如何加油更省油——",
+    "claim": 8.97,
+    "verdict": "mismatch",
+    "official_today": 8.4,
+    "official_history": 8.92
+   },
+   {
+    "city": "哈尔滨",
+    "site": "www.tanshiy.com",
+    "title": "东北地区油价今日价格 - 东北地区油价多少 - 东北地区油价走势",
+    "claim": null,
+    "verdict": "undetermined",
+    "official_today": 8.4,
+    "official_history": 8.92
+   },
+   {
+    "city": "哈尔滨",
+    "site": "凤凰网",
+    "title": "大降价!哈尔滨油价定了:加满一箱92号汽油可少花",
+    "claim": 8.97,
+    "verdict": "mismatch",
+    "official_today": 8.4,
+    "official_history": 8.92
+   },
+   {
+    "city": "哈尔滨",
+    "site": "网易",
+    "title": "近期加油优惠信息汇总如何加油更省油——",
+    "claim": 8.97,
+    "verdict": "mismatch",
+    "official_today": 8.4,
+    "official_history": 8.92
+   },
+   {
+    "city": "哈尔滨",
+    "site": "youjia.abapi.cn",
+    "title": "哈尔滨今日油价",
+    "claim": 8.58,
+    "verdict": "mismatch",
+    "official_today": 8.4,
+    "official_history": 8.92
+   }
+  ],
+  "summary": {
+   "correct": 8,
+   "undetermined": 23,
+   "mismatch": 18,
+   "stale": 1
+  },
+  "n": 50
+ },
+ "cross_city": {
+  "rows": [
+   {
+    "city": "北京",
+    "date": "11月14日油价",
+    "p92": 8.37,
+    "p95": 8.91,
+    "p92_hist": 8.89
+   },
+   {
+    "city": "上海",
+    "date": "11月14日油价",
+    "p92": 8.33,
+    "p95": 8.87,
+    "p92_hist": 8.85
+   },
+   {
+    "city": "广州",
+    "date": "11月14日油价",
+    "p92": 8.39,
+    "p95": 9.09,
+    "p92_hist": 8.91
+   },
+   {
+    "city": "成都",
+    "date": "11月14日油价",
+    "p92": 8.46,
+    "p95": 9.04,
+    "p92_hist": 8.98
+   },
+   {
+    "city": "哈尔滨",
+    "date": "11月14日油价",
+    "p92": 8.4,
+    "p95": 8.97,
+    "p92_hist": 8.92
+   },
+   {
+    "city": "乌鲁木齐",
+    "date": "11月14日油价",
+    "p92": 8.17,
+    "p95": 8.74,
+    "p92_hist": 8.69
+   },
+   {
+    "city": "西安",
+    "date": "11月14日油价",
+    "p92": 8.25,
+    "p95": 8.72,
+    "p92_hist": 8.76
+   },
+   {
+    "city": "沈阳",
+    "date": "11月14日油价",
+    "p92": 8.44,
+    "p95": 9.02,
+    "p92_hist": 8.96
+   },
+   {
+    "city": "拉萨",
+    "date": "11月14日油价",
+    "p92": 9.24,
+    "p95": 9.77,
+    "p92_hist": 9.75
+   },
+   {
+    "city": "阿里",
+    "date": "11月14日油价",
+    "p92": 9.62,
+    "p95": 10.17,
+    "p92_hist": 10.14
+   },
+   {
+    "city": "三沙",
+    "date": "11月14日油价",
+    "p92": 9.48,
+    "p95": 10.08,
+    "p92_hist": 10.0
+   },
+   {
+    "city": "日喀则",
+    "date": "11月14日油价",
+    "p92": 9.24,
+    "p95": 9.77,
+    "p92_hist": 9.75
+   }
+  ],
+  "min": 8.17,
+  "max": 9.62,
+  "spread": 1.45
+ },
+ "vertical": {
+  "verticals": {
+   "stock": {
+    "query": "腾讯控股 股价",
+    "hit": true,
+    "category": "stock",
+    "n_vr": 1
+   },
+   "train": {
+    "query": "G677 次列车 时刻表",
+    "hit": true,
+    "category": "train",
+    "n_vr": 1
+   },
+   "gold": {
+    "query": "黄金价格 每克",
+    "hit": true,
+    "category": "gold",
+    "n_vr": 1
+   },
+   "oil": {
+    "query": "北京 92 号汽油 价格",
+    "hit": true,
+    "category": "oil",
+    "n_vr": 1
+   },
+   "weather": {
+    "query": "北京 天气 最高温",
+    "hit": false,
+    "category": "",
+    "n_vr": 0
+   },
+   "phone": {
+    "query": "iPhone 17 价格",
+    "hit": false,
+    "category": "",
+    "n_vr": 0
+   },
+   "car": {
+    "query": "比亚迪 汉 价格",
+    "hit": true,
+    "category": "car",
+    "n_vr": 1
+   },
+   "exchangerate": {
+    "query": "美元 人民币 汇率",
+    "hit": false,
+    "category": "",
+    "n_vr": 0
+   },
+   "medical": {
+    "query": "阿莫西林 用法用量",
+    "hit": false,
+    "category": "",
+    "n_vr": 0
+   }
+  },
+  "control_hits": 0,
+  "control_n": 3,
+  "covered": [
+   "stock",
+   "train",
+   "gold",
+   "oil",
+   "car"
+  ]
+ },
+ "edge": [
+  {
+   "city": "漠河",
+   "has_card": false,
+   "verdict": "unknown",
+   "note": "无 VR 卡，判定为存疑（不判编造）"
+  }
+ ]
+}

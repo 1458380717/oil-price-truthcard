@@ -1,0 +1,100 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<title>油价真伪卡 · 实测报告</title><style>
+*{box-sizing:border-box}
+body{margin:0;background:#f6f7f9;color:#1a1a1a;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 28px 80px}
+h1{font-size:30px;margin:0 0 6px;letter-spacing:-.4px}
+.sub{color:#6b7280;font-size:14px;margin-bottom:28px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.chip{background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:6px 14px;font-size:13px;color:#374151}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:34px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px}
+.card .k{font-size:12px;color:#6b7280;margin-bottom:8px}
+.card .v{font-size:32px;font-weight:700;line-height:1}
+.card .n{font-size:12px;color:#9ca3af;margin-top:8px}
+.bad .v{color:#c2410c}.good .v{color:#15803d}.warn .v{color:#b45309}.mute .v{color:#6b7280}
+section{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:24px 26px;margin-bottom:22px}
+h2{font-size:19px;margin:0 0 4px}
+.note{color:#6b7280;font-size:13px;margin:0 0 18px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;background:#f9fafb;color:#4b5563;font-weight:600;padding:9px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid #f3f4f6}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums}
+.tag{display:inline-block;padding:2px 9px;border-radius:6px;font-size:12px;white-space:nowrap}
+.t-correct{background:#dcfce7;color:#15803d}
+.t-stale{background:#fef3c7;color:#b45309}
+.t-mismatch{background:#fee2e2;color:#b91c1c}
+.t-unknown,.t-undetermined{background:#f3f4f6;color:#6b7280}
+.bar{height:15px;background:#e5e7eb;border-radius:4px;position:relative;overflow:hidden;min-width:120px}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:#f97316;border-radius:4px}
+.hl{background:#fffbeb}
+footer{color:#9ca3af;font-size:12px;text-align:center;margin-top:36px;line-height:1.9}
+</style></head><body><div class="wrap">
+<h1>油价真伪卡 · 实测报告</h1>
+<div class="sub">用元宝搜索成品油 VR 卡的「今日 / 上一轮」双字段，判定一句油价断言属于哪一轮</div>
+<div class="meta">
+  <span class="chip">生成时间 2026-11-14 22:59:53</span>
+  <span class="chip">SearchPro 调用 36 次</span>
+  <span class="chip">耗时 7.8s</span>
+  <span class="chip">数据源 oil_pack.json</span>
+  <span class="chip">Mode=1 VR 卡 / Mode=0 自然检索</span>
+</div>
+
+    <div class="cards">
+      <div class="card bad"><div class="k">断言验真 · 全错</div><div class="v">8/8</div>
+        <div class="n">mismatch 8 · stale 0 · correct 0</div></div>
+      <div class="card warn"><div class="k">网页信息 · 非今日价占比</div><div class="v">70.4%</div>
+        <div class="n">可判定 27 / 50 条</div></div>
+      <div class="card"><div class="k">跨城价差（92 号）</div><div class="v">1.45</div>
+        <div class="n">元/升 · 8.17 ~ 9.62 · 12 城</div></div>
+      <div class="card mute"><div class="k">垂类覆盖</div><div class="v">5/9</div>
+        <div class="n">对照组误命中 0/3</div></div>
+    </div>
+
+<section>
+  <h2>一、断言验真：8 个城市，8 条全错</h2>
+  <p class="note">模型在未联网、未见官方值的条件下先作答，再由脚本与 VR 卡四态比对。「低估幅度」= 官方今日价 − 断言值。</p>
+  <table><thead><tr><th>城市</th><th>AI 断言</th><th>官方今日价</th><th>官方上一轮价</th><th>低估幅度</th><th>判定</th></tr></thead>
+  <tbody><tr><td>南京</td><td class='num'>7.85</td><td class='num'>8.34</td><td class='num'>8.85</td><td class='num'>+0.49</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>杭州</td><td class='num'>7.88</td><td class='num'>8.34</td><td class='num'>8.85</td><td class='num'>+0.46</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>武汉</td><td class='num'>7.80</td><td class='num'>8.38</td><td class='num'>8.90</td><td class='num'>+0.58</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>西安</td><td class='num'>7.75</td><td class='num'>8.25</td><td class='num'>8.76</td><td class='num'>+0.50</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>郑州</td><td class='num'>7.78</td><td class='num'>8.38</td><td class='num'>8.90</td><td class='num'>+0.60</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>重庆</td><td class='num'>7.90</td><td class='num'>8.43</td><td class='num'>8.94</td><td class='num'>+0.53</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>天津</td><td class='num'>7.82</td><td class='num'>8.36</td><td class='num'>8.88</td><td class='num'>+0.54</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>沈阳</td><td class='num'>7.76</td><td class='num'>8.44</td><td class='num'>8.96</td><td class='num'>+0.68</td><td><span class="tag t-mismatch">与官方不符</span></td></tr></tbody></table>
+</section>
+
+<section>
+  <h2>二、网页信息时效审计（Mode=0 自然检索）</h2>
+  <p class="note">同一城市自然检索前十条摘要，取首个「元/升」价格与今日价、上一轮价比对。共 50 条，此处展示前 24 条。</p>
+  <table><thead><tr><th>城市</th><th>站点</th><th>网页所报价</th><th>今日价</th><th>上一轮价</th><th>判定</th></tr></thead>
+  <tbody><tr><td>北京</td><td>youjia.abapi.cn</td><td class='num'>8.37</td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-correct">属实</span></td></tr><tr><td>北京</td><td>爱查询油价</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>北京</td><td>www.2scc.com</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>北京</td><td>网易</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>北京</td><td>就发物流网</td><td class='num'>7.84</td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>北京</td><td>搜狐网</td><td class='num'>0.53</td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>北京</td><td>查油价</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>北京</td><td>QQ浏览器</td><td class='num'>0.50</td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>北京</td><td>本地宝</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>北京</td><td>m.05348.com</td><td class='num'></td><td class='num'>8.37</td><td class='num'>8.89</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>上海</td><td>youjia.abapi.cn</td><td class='num'>8.33</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-correct">属实</span></td></tr><tr><td>上海</td><td>就发物流网</td><td class='num'>8.25</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>上海</td><td>youjia.lnch.cn</td><td class='num'></td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>上海</td><td>网易新闻客户端</td><td class='num'>0.57</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>上海</td><td>微博</td><td class='num'>0.57</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>上海</td><td>查油价</td><td class='num'></td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>上海</td><td>www.zuixinyoujia.com</td><td class='num'></td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>上海</td><td>微博</td><td class='num'>0.57</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-mismatch">与官方不符</span></td></tr><tr><td>上海</td><td>网易</td><td class='num'></td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>上海</td><td>QQ浏览器</td><td class='num'>8.33</td><td class='num'>8.33</td><td class='num'>8.85</td><td><span class="tag t-correct">属实</span></td></tr><tr><td>广州</td><td>油价查询</td><td class='num'></td><td class='num'>8.39</td><td class='num'>8.91</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>广州</td><td>油价查询</td><td class='num'></td><td class='num'>8.39</td><td class='num'>8.91</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>广州</td><td>油价查询</td><td class='num'></td><td class='num'>8.39</td><td class='num'>8.91</td><td><span class="tag t-undetermined">无明确价格</span></td></tr><tr><td>广州</td><td>油价查询</td><td class='num'></td><td class='num'>8.39</td><td class='num'>8.91</td><td><span class="tag t-undetermined">无明确价格</span></td></tr></tbody></table>
+</section>
+
+<section>
+  <h2>三、跨城价差：8.17 ~ 9.62，差 1.45 元/升</h2>
+  <p class="note">同标号、同一天、同口径（零售挂牌价）。最低与最高都在西部，说明是运距而非地域标签决定价格。</p>
+  <table><thead><tr><th>城市</th><th>92 号今日价</th><th>相对水平</th><th>本轮变动</th></tr></thead>
+  <tbody><tr><td>阿里</td><td class='num'>9.62</td><td><div class='bar'><i style='width:100.0%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>三沙</td><td class='num'>9.48</td><td><div class='bar'><i style='width:91.5%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>拉萨</td><td class='num'>9.24</td><td><div class='bar'><i style='width:76.9%'></i></div></td><td class='num'>+0.51</td></tr><tr><td>日喀则</td><td class='num'>9.24</td><td><div class='bar'><i style='width:76.9%'></i></div></td><td class='num'>+0.51</td></tr><tr><td>成都</td><td class='num'>8.46</td><td><div class='bar'><i style='width:29.6%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>沈阳</td><td class='num'>8.44</td><td><div class='bar'><i style='width:28.4%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>哈尔滨</td><td class='num'>8.40</td><td><div class='bar'><i style='width:26.0%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>广州</td><td class='num'>8.39</td><td><div class='bar'><i style='width:25.4%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>北京</td><td class='num'>8.37</td><td><div class='bar'><i style='width:24.1%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>上海</td><td class='num'>8.33</td><td><div class='bar'><i style='width:21.7%'></i></div></td><td class='num'>+0.52</td></tr><tr><td>西安</td><td class='num'>8.25</td><td><div class='bar'><i style='width:16.9%'></i></div></td><td class='num'>+0.51</td></tr><tr><td>乌鲁木齐</td><td class='num'>8.17</td><td><div class='bar'><i style='width:12.0%'></i></div></td><td class='num'>+0.52</td></tr></tbody></table>
+</section>
+
+<section>
+  <h2>四、垂类召回与边界测试</h2>
+  <p class="note">官方文档列 9 类，本次稳定召回 5 类。垂类覆盖会随查询词与时间变化，故「查不到」一律判存疑。</p>
+  <table><thead><tr><th>垂类</th><th>探测 query</th><th>召回</th><th>vr_category</th></tr></thead>
+  <tbody><tr><td>stock</td><td>腾讯控股 股价</td><td>✅ 召回</td><td>stock</td></tr><tr><td>train</td><td>G677 次列车 时刻表</td><td>✅ 召回</td><td>train</td></tr><tr><td>gold</td><td>黄金价格 每克</td><td>✅ 召回</td><td>gold</td></tr><tr><td>oil</td><td>北京 92 号汽油 价格</td><td>✅ 召回</td><td>oil</td></tr><tr><td>weather</td><td>北京 天气 最高温</td><td>❌ 未召回</td><td>—</td></tr><tr><td>phone</td><td>iPhone 17 价格</td><td>❌ 未召回</td><td>—</td></tr><tr><td>car</td><td>比亚迪 汉 价格</td><td>✅ 召回</td><td>car</td></tr><tr><td>exchangerate</td><td>美元 人民币 汇率</td><td>❌ 未召回</td><td>—</td></tr><tr><td>medical</td><td>阿莫西林 用法用量</td><td>❌ 未召回</td><td>—</td></tr></tbody></table>
+  <p class="note" style="margin-top:18px">边界测试（无卡城市）：</p>
+  <table><thead><tr><th>城市</th><th>VR 卡</th><th>判定</th><th>说明</th></tr></thead>
+  <tbody><tr><td>漠河</td><td>无 VR 卡</td><td><span class="tag t-unknown">存疑</span></td><td>无 VR 卡，判定为存疑（不判编造）</td></tr></tbody></table>
+</section>
+
+<section>
+  <h2>五、判定口径</h2>
+  <table><thead><tr><th>项</th><th>值</th><th>说明</th></tr></thead><tbody>
+  <tr><td>数值容差</td><td class="num">0.005</td><td>两位小数零售价，差一分为差</td></tr>
+  <tr><td>断言正则</td><td><code>\d{1,2}\.\d{1,2}\s*元/\s*升</code></td><td>只认带单位的数字</td></tr>
+  <tr><td>断言分母</td><td>8</td><td>抽不出数字的回答不计入</td></tr>
+  <tr><td>网页分母</td><td>27 / 50</td><td>无明确价格的 23 条不计入</td></tr>
+  <tr><td>跨城价差口径</td><td>极值差</td><td>非平均值波动</td></tr>
+  </tbody></table>
+</section>
+
+<footer>本报告由 oil_pack.py 采集、build_report_oil.py 渲染，全部数字可在 oil_pack.json 中逐项核对<br>
+模型断言为单模型单次作答样本，仅用于演示判定流程，不构成对任何模型的性能结论</footer>
+</div></body></html>
