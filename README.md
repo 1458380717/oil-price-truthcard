@@ -4,6 +4,8 @@
 
 核心区别在于：它不把所有错误都叫「幻觉」。上一轮的价当时是真的，工具会判 `stale`（已过期），而不是 `mismatch`（不符）。把真话判成谎话的工具，比没有工具更糟。
 
+仓库地址：https://github.com/1458380717/oil-price-truthcard
+
 ![实测报告页](shots/03_report.png)
 
 ## 它解决什么
