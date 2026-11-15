@@ -6,7 +6,7 @@
 
 ![项目架构](shots/13_hero.png)
 
-交付物：代码 `https://github.com/1458380717/oil-price-truthcard`（公开仓库，18 个提交，提交历史就是整个实验过程；CI 已真实跑过：首次推送触发 `reproducibility` 工作流，在干净环境跑单测、校验数据包，9 秒通过，绿勾可查）；数据 `data/bigtest.json` 是主包，`data/compare.json` 是 A/B；报告 `docs/油价真伪卡.html`；服务 `python src/server.py`。Python 3.10 以上，零第三方依赖。配图 `figs/` 下四张由 `src/build_figs.py` 从数据包直接渲染，数字变了图跟着变。
+交付物：代码 `https://github.com/1458380717/oil-price-truthcard`（公开仓库，提交历史就是整个实验过程，每次改动都留着；CI 已真实跑过：首次推送触发 `reproducibility` 工作流，在干净环境跑单测、校验数据包，9 秒通过，绿勾可查）；数据 `data/bigtest.json` 是主包，`data/compare.json` 是 A/B；报告 `docs/油价真伪卡.html`；服务 `python src/server.py`。Python 3.10 以上，零第三方依赖。配图 `figs/` 下四张由 `src/build_figs.py` 从数据包直接渲染，数字变了图跟着变。
 
 ![GitHub 仓库首页：公开、可点开，提交历史完整](shots/16_gh_repo.png)
 
