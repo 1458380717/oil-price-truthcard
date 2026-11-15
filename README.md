@@ -102,6 +102,7 @@ src/build_dist.py        分布图生成
 src/oil_pack.py          12 城快测（首轮）
 src/wsa_client.py        SearchPro 客户端，TC3 签名手写
 src/build_report.py      数据包 → 单文件 HTML 报告
+src/ai_smell.py          文章 AI 味体检表（破折号/整句加粗/术语引号计数）
 answers/                 待验真的模型回答（JSON）
 data/oil_pack.json       一次真实采集的完整数据包
 docs/                    渲染好的报告页
