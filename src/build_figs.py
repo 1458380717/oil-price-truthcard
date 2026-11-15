@@ -218,6 +218,69 @@ def fig_web_dedup():
     return svg(W, H, "".join(body))
 
 
+def fig_gains():
+    """元宝搜索解决了什么：三处「没卡 / 有卡」的对照，外加一处没解决。"""
+    W, H = 1200, 880
+    body = []
+    body.append(text(40, 48, "元宝搜索解决了三个问题，第四个没解决", 23, INK, "500"))
+    body.append(text(40, 76, "同一批城市、同一个 query，只换检索模式。左边是普通检索（Mode=0），右边是权威 VR 卡（Mode=1）。", 14, MUTED))
+
+    # 列头
+    body.append(text(268, 108, "普通检索：45 个数字，说不清是哪天的", 13, MUTED, "500"))
+    body.append(text(732, 108, "元宝 VR 卡：字段带生效日，两个数能互证", 13, BLUE, "500"))
+
+    rows = [
+        ("①", "分不清\n过期和编造",
+         ["40%", "首答是今日价", "其余 60% 是别的日子，", "从结果里看不出来"],
+         ["15/15", "今日价 + 上一轮价都给", "8.89 等于上一轮", "→ 判 stale，不算编造"]),
+        ("②", "抽取\n噪声",
+         ["0.28", "郑州首答抽出的\"价格\"", "100 条里 36 条摘要", "压根没写价格"],
+         ["3 字段", "数值 / 生效日 / 来源站点", "不用正则，不用二次核对", "89 次调用 41 秒跑完"]),
+        ("③", "来源\n不可追",
+         ["11 组", "同标题被站点互搬", "有误率 76.7% → 79.2%", "多查来源反而更糟"],
+         ["同价", "来源与生效日跟着价格走", "被十家站点搬", "还是那一个价"]),
+    ]
+
+    top = 126
+    rh = 178
+    for i, (num, label, left, right) in enumerate(rows):
+        y = top + i * (rh + 14)
+        # 左侧标签
+        body.append(f'<rect x="40" y="{y}" width="200" height="{rh}" rx="8" fill="#f3f5f8" stroke="{LINE}"/>')
+        body.append(text(66, y + 46, num, 28, MUTED, "500"))
+        parts = label.split("\n")
+        for j, pt in enumerate(parts):
+            body.append(text(96, y + 40 + j * 26, pt, 17, INK, "500"))
+        body.append(text(66, y + 132, "问题", 12, MUTED))
+
+        # 普通检索面板
+        body.append(f'<rect x="258" y="{y}" width="445" height="{rh}" rx="8" fill="#fff" stroke="{RED_L}"/>')
+        body.append(f'<rect x="258" y="{y}" width="4" height="{rh}" rx="2" fill="{RED}"/>')
+        body.append(text(284, y + 50, left[0], 34, RED, "500"))
+        body.append(text(284, y + 84, left[1], 14, INK))
+        body.append(text(284, y + 116, left[2], 13, MUTED))
+        body.append(text(284, y + 140, left[3], 13, MUTED))
+
+        # VR 卡面板
+        body.append(f'<rect x="722" y="{y}" width="438" height="{rh}" rx="8" fill="#fff" stroke="{BLUE_L}"/>')
+        body.append(f'<rect x="722" y="{y}" width="4" height="{rh}" rx="2" fill="{BLUE}"/>')
+        body.append(text(748, y + 50, right[0], 34, BLUE, "500"))
+        body.append(text(748, y + 84, right[1], 14, INK))
+        body.append(text(748, y + 116, right[2], 13, MUTED))
+        body.append(text(748, y + 140, right[3], 13, MUTED))
+
+    # 没解决的一条
+    y = top + 3 * (rh + 14)
+    body.append(f'<rect x="40" y="{y}" width="1120" height="128" rx="8" fill="#fdf6ec" stroke="{AMBER_L}"/>')
+    body.append(text(66, y + 40, "④", 26, AMBER, "500"))
+    body.append(text(96, y + 38, "没解决：覆盖不全", 17, INK, "500"))
+    body.append(text(66, y + 74, "上海 95 号、成都 0 号柴油返回 0 条卡；27 个垂类探针只命中 14 个，oil 这一类命中 1/3。", 14, INK))
+    body.append(text(66, y + 102, "所以我从头到尾只敢说 92 号汽油。工具给的是对照值，判决还得自己写，这是它不管的部分。", 14, MUTED))
+
+    body.append(text(40, H - 24, "数据：data/bigtest.json（assert_verify / web_freshness）、data/compare.json；普通检索 45 次首答，VR 卡 15 城 15 次双字段", 12, MUTED))
+    return svg(W, H, "".join(body))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--png", action="store_true")
@@ -228,6 +291,7 @@ def main():
         "fig_gap40": fig_gap40(),
         "fig_spread49": fig_spread49(),
         "fig_web_dedup": fig_web_dedup(),
+        "fig_gains": fig_gains(),
     }
     for name, s in figs.items():
         p = OUT / f"{name}.svg"
@@ -246,11 +310,12 @@ def main():
         tmp = OUT / f"_{name}.html"
         tmp.write_text(html, encoding="utf-8")
         url = "file:///" + str(tmp).replace("\\", "/")
+        env = dict(os.environ, CDP_MATCH="figs")
         subprocess.run([sys.executable, cdp, "goto", url], check=False,
-                       stdout=subprocess.DEVNULL)
+                       stdout=subprocess.DEVNULL, env=env)
         png = OUT / f"{name}.png"
         subprocess.run([sys.executable, cdp, "shot", str(png),
-                        "--viewport", f"{w},{h}"], check=False)
+                        "--viewport", f"{w},{h}"], check=False, env=env)
         print(f"[png] {png.relative_to(ROOT)}  {w}x{h}")
 
 
