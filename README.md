@@ -34,9 +34,10 @@
 
 ```python
 def judge(asserted, today, history):
-    if today is not None and abs(asserted - today) < 0.005:
+    a = int(round(asserted * 100))          # 整数分比较，避开浮点抖动
+    if today is not None and a == int(round(today * 100)):
         return "correct"     # 属实
-    if history is not None and abs(asserted - history) < 0.005:
+    if history is not None and a == int(round(history * 100)):
         return "stale"       # 已过期，曾经是真的
     return "mismatch"        # 两轮都不是
 ```
@@ -51,9 +52,12 @@ cd oil-price-truthcard
 
 cp .env.example .env          # 填 SecretId / SecretKey
 
-python src/oil_pack.py        # 采集 → data/oil_pack.json（36 次调用，约 0.72 元）
-python src/build_report.py    # 渲染 → docs/油价真伪卡.html
-python src/build_article.py   # 出文章 → article.md
+python src/bigtest.py --only unit   # 先跑 10 条单测，0 次调用，验证环境
+python src/bigtest.py               # 89 次调用 → data/bigtest.json
+python src/compare.py               # 60 次调用 → data/compare.json
+python src/build_report.py          # 渲染 → docs/油价真伪卡.html
+python src/build_dist.py --png      # 分布对比图 → figs/fig_dist.png（需本地 Chrome）
+python src/build_figs.py --png      # 其余五张数据图 → figs/*.png（需本地 Chrome）
 ```
 
 零第三方依赖。TC3-HMAC-SHA256 签名用标准库手写，不装腾讯云 SDK——为的是在干净环境里 clone 下来就能跑。Python 3.10+。
@@ -69,7 +73,7 @@ python src/build_article.py   # 出文章 → article.md
 | 转载去重 | 11 组同标题跨站转载，去重后错误率不降反升 |
 | A/B 对比 | 15 城首答仅 **40%** 是今日价，VR 卡 **100%** 双字段 |
 | 服务 | `python src/server.py` 本地 Web，四态判定 |
-| 跨城价差 | 12 城极差 **1.45 元/升**（乌鲁木齐 8.17 ~ 阿里 9.62），一箱差 72.5 元 |
+| 跨城价差 | 49 城极差 **1.23 元/升**（西安 8.25 ~ 海口 9.48），一箱差 61.5 元（12 城试跑包另有 1.45，见 `data/oil_pack.json`） |
 | 垂类召回 | 27 探针覆盖 6/9 类，oil 类仅 1/3 |
 | 单元测试 | 10/10 通过，含浮点边界用例；CI 零密钥复核数据包 |
 | 口径 | 全部数字标分母，见 `article.md` 第六节 |

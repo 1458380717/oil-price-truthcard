@@ -4,7 +4,7 @@
   "script": "bigtest.py",
   "tool_calls": 89,
   "elapsed_sec": 41.4,
-  "rerun_unit_at": "2026-11-14 23:45:46"
+  "rerun_unit_at": "2026-11-15 14:10:40"
  },
  "assert_verify": {
   "n": 40,
