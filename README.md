@@ -46,7 +46,7 @@ def judge(asserted, today, history):
 ## 快速开始
 
 ```bash
-git clone https://github.com/yourname/oil-price-truthcard
+git clone https://github.com/1458380717/oil-price-truthcard
 cd oil-price-truthcard
 
 cp .env.example .env          # 填 SecretId / SecretKey
